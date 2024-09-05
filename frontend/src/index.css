@@ -1,0 +1,161 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
+  background-attachment: fixed;;
+  
+  height: 100vh;
+  width: 100v;
+}
+.h-100{
+  min-height: calc(100vh - 180px);
+}
+.t-1{
+  font-size: 5rem;
+  font-weight: bold;
+}
+.t-2{
+  font-size: 4rem;
+  font-weight: bold;
+}
+.t-3{
+  font-size: 3rem;
+}
+.t-4{
+  font-size: 2rem;
+}
+.t-5{
+  font-size: 1rem;
+}
+.t-6{
+  font-size: 1.5rem;
+}
+.td-0{
+  text-decoration: none;
+}
+.m-0{
+  margin: 0;
+}
+.m-1{
+  margin: 12px;
+}
+.m-2{
+  margin: 8px;
+}
+.m-3{
+  margin: 12px 0;
+}
+.m-4{
+  margin: 0 8px;
+}
+.mt-1{
+  margin-top: 180px;
+}
+.mt-2{
+  margin-top: 12px;
+}
+.p-0{
+  padding: 0;
+}
+.p-1{
+  padding: 12px;
+}
+.p-2{
+  padding: 8px;
+}
+.p-3{
+  padding: 10px 20px;
+}
+.p-4{
+  padding: 20px 10px;
+}
+.righteous{
+  font-family: 'Righteous';
+}
+.poppins{
+  font-family: 'Poppins';
+}
+.courier-prime{
+  font-family: 'Courier Prime';
+}
+@font-face {
+  font-family: "Logo";
+    src: local("logo"),
+    url("./font/resso.ttf") format("truetype");
+    font-weight: bold;
+}
+.logo{
+  font-family: 'logo';
+}
+.c-0{
+  color: #000;
+}
+.c-1{
+  color: #666;
+}
+.flex{
+  display: flex;
+}
+.j-c{
+  justify-content: center;
+}
+.j-s{
+  justify-content: space-between;
+}
+.j-l{
+  justify-content: left;
+}
+.a-i{
+  align-items: center;
+}
+.a-s{
+  align-items: start;
+}
+.text-grad{
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg , rgb(188, 0, 188), rgb(3, 129, 255) 50%);
+  background-size: 200% 200%; 
+}
+.text-anim{
+  animation: moveColors 3s ease infinite;
+}
+@keyframes moveColors {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+}
+.bs-1{
+  border: solid 1px #fff;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+}
+.br-1{
+  border-radius: 20px;
+}
+.br-2{
+  border-radius: 12px;
+}
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
