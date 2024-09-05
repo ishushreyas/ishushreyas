@@ -93,6 +93,12 @@ body{
 .c-1{
   color: #666;
 }
+.bg-1{
+  background-color: #fff;
+}
+.bg-2{
+  background-color: #000;
+}
 .flex{
   display: flex;
 }
