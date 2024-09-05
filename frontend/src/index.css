@@ -81,7 +81,7 @@ body{
 @font-face {
   font-family: "Logo";
     src: local("logo"),
-    url("./font/resso.ttf") format("truetype");
+    url("./font/logo.ttf") format("truetype");
     font-weight: bold;
 }
 .logo{
