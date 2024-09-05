@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <header className={`header ${ scrollYValue > 1  ? "scrolled" : ""}`}>
-      <Link className="logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</Link>
+      <Link className="t-6 logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</Link>
       <nav onClick={toggleMenu} className={`nav ${isOpen ? "open" : ""}`}>
         <ul>
             <li>
