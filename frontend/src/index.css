@@ -137,9 +137,17 @@ body{
     background-position: 200% 200%;
   }
 }
-.bs-1{
+.bd-0{
+  border: solid 1px #666;
+}
+.bd-1{
   border: solid 1px #fff;
+}
+.bs-1{
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+}
+.bs-2{
+  box-shadow: 0 0 4px rgb(0, 0, 0, 0.02);
 }
 .br-1{
   border-radius: 20px;
@@ -147,11 +155,16 @@ body{
 .br-2{
   border-radius: 12px;
 }
+.br-3{
+  border-radius: 8px;
+}
+.br-4{
+  border-radius: 4px;
+}
 .grid {
   display: grid;
   gap: 2rem;
 }
-
 .grid-cols-1 {
   grid-template-columns: repeat(1, 1fr);
 }
