@@ -4,26 +4,17 @@ const Services = () => {
   return (
     <div className="m-1 p-1">
       <h1 className="righteous">Services</h1>
-      <p className="poppins">Here's the list of tools I use.</p>
-      <h2 className="t-6 poppins">Software</h2>
-      <div className="m-3">
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">VS Code</span>
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">Android Studio</span>
+      <div className='bs-2 br-2 bg-1 m-1 p-1'>
+        <h3 className='t-6 righteous'>Static Website</h3>
+        <p className='poppins'>I use React framework to create Static website.</p>
       </div>
-      <h2 className="t-6 poppins">Languages</h2>
-      <div className="m-3">
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">Go/GoLang</span>
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">JavaScript</span>
+      <div className='bs-2 br-2 bg-1 m-1 p-1'>
+        <h3 className='t-6 righteous'>Full Stack</h3>
+        <p className='poppins'>I use React Js for frontend and GoLang for backend. This site itself is a full stack website created using React Js and GoLang.</p>
       </div>
-      <h2 className="t-6 poppins">Interested In</h2>
-      <div className="m-3">
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">React</span>
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">C++</span>
-      </div>
-      <h2 className="t-6 poppins">Other Interests</h2>
-      <div className="m-3">
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">Japanese</span>
-        <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">Sketching</span>
+      <div className='bs-2 br-2 bg-1 m-1 p-1'>
+        <h3 className='t-6 righteous'>Backend-server</h3>
+        <p className='poppins'>I use GoLang to create Backend servers and APIs.</p>
       </div>
     </div>
   );

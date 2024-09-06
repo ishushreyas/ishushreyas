@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bs-1 br-1 m-1 p-1 bg-1">
+    <div className="bs-1 br-2 m-1 p-1 bg-1">
       <Link className="td-0 c-0" to={project.link}>
         <h3 className="t-6 m-0 mt-2 righteous">{project.title}</h3> 
       </Link>

@@ -15,6 +15,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css"
+import AboutSite from "./routes/about-site";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,10 @@ const router = createBrowserRouter([
         path: "services",
         element: <Services />,
       },
-      
+      {
+        path: "about-this-site",
+        element: <AboutSite />,
+      },
     ],
   },
 ]);
