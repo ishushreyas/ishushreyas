@@ -2,6 +2,7 @@ const AboutMe = () => {
   return (
     <div className="m-1 p-1">
       <h1 className="righteous">About Me</h1>
+      <p className="poppins">I am a full stack developer uses <i>React</i> and <i>GoLang</i> for <b>Web Development</b> and <i>Java</i> for <b>Android Development</b>. Recently, I am exploring C++.</p>
       <h2 className="t-6 poppins">Software</h2>
       <div className="m-3">
         <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">VS Code</span>
