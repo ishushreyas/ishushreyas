@@ -10,7 +10,7 @@ const ProjectCard = ({ project }) => {
       <br />
       <div className="flex j-s a-s">
       {project.tags.map((item) => {
-        return <li className="p-2 m-4 bs-1 br-1" key={item}>{item}</li>
+        return <li className="p-2 m-4 bs-1 br-1 ls-0 c-1 courier-prime" key={item}>{item}</li>
       })}
       </div>
       <br />
