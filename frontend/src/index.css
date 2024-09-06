@@ -3,7 +3,6 @@ body{
   padding: 0;
   background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
   background-attachment: fixed;;
-  
   height: 100vh;
   width: 100v;
 }
@@ -68,6 +67,9 @@ body{
 }
 .p-4{
   padding: 20px 10px;
+}
+.ls-0{
+  list-style-type: none;
 }
 .righteous{
   font-family: 'Righteous';
