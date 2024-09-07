@@ -69,6 +69,7 @@
     padding: 10px;
     border-radius: 8px;
     overflow: hidden;
+    background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
   }
 
   /* Show the navigation when open */
@@ -120,6 +121,5 @@ nav ul li a.active {
 @media screen and (max-width: 600px) {
   nav ul li {
     float: none;
-    background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
   }
 }
