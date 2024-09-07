@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Form } from 'react-router-dom';
 
 export default function Contact() {
-  const SERVER_URL = "https://ishushreyas-production.up.railway.app/contact";
+  const SERVER_URL = "https://ishushreyas.up.railway.app/contact";
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
@@ -12,7 +12,7 @@ export default function Contact() {
       name: nameRef.current.value,
       email: emailRef.current.value,
       message: messageRef.current.value
-  };
+    };
 
   fetch( SERVER_URL , {
       method: 'POST',
@@ -43,8 +43,8 @@ export default function Contact() {
               handleOnSubmit();
             }}
           >
-            <button className="bs-1 bd-1 bg-1 t-5 m-3 p-3 br-1 poppins">Send</button>
-          </Form>
+          <button className="bs-1 bd-1 bg-1 t-5 m-3 p-3 br-1 poppins">Send</button>
+        </Form>
     </div>
   );
 }

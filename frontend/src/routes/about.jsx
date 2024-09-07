@@ -24,7 +24,7 @@ const AboutMe = () => {
         <span className="bs-2 br-4 bg-1 m-1 p-2 courier-prime">Sketching</span>
       </div>
       <h2 className="t-6 poppins">Work</h2>
-      <p className="poppins">Currently I am working as a founding member of <a href="https://bnstech.online/">BnS Tech</a>.</p>
+      <p className="poppins">Currently I am working as a founding member of <Link className="td-0 c-2" to="https://bnstech.online/">BnS Tech</Link>.</p>
     </div>
   );
 };
