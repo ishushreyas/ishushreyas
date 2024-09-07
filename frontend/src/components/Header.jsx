@@ -58,7 +58,7 @@ const Header = () => {
           </ul>
       </nav>
       <div className="toggle-button" onClick={toggleMenu}>
-        <span className="material-symbols-rounded c-1 p-1">menu</span>
+        <span className="material-symbols-rounded c-1 p-1">{isOpen ? "close" : "menu"}</span>
       </div>
     </header>
   );

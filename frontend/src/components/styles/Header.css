@@ -28,7 +28,6 @@
 .nav {
   display: flex;
   gap: 20px;
-  background: transparent;
 }
 
 .nav a {
@@ -36,8 +35,7 @@
   color: #333;
   padding: 8px 12px;
   font-size: 18px;
-  font-family: "Poppins", sans-serif;";
-  
+  font-family: "Poppins", sans-serif;
 }
 
 .nav a:hover {
@@ -122,8 +120,6 @@ nav ul li a.active {
 @media screen and (max-width: 600px) {
   nav ul li {
     float: none;
-  }
-  .nav{
     background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
   }
 }
