@@ -144,10 +144,10 @@ body{
   }
 }
 .bd-0{
-  border: solid 1px #666;
+  border: solid 3px #999;
 }
 .bd-1{
-  border: solid 1px #fff;
+  border: solid 3px #fff;
 }
 .bs-1{
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
