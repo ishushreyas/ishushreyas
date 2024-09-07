@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Form } from 'react-router-dom';
 
 export default function Contact() {
-  const SERVER_URL = "https://ishushreyas-production.up.railway.app/";
+  const SERVER_URL = "https://ishushreyas-production.up.railway.app/contact";
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);

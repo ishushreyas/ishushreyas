@@ -10,12 +10,9 @@ export default function ErrorPage() {
     <>
       <Header />
     <div className="h-100 p-1">
-      <h3 className="courier-prime">404</h3>
-    <h1 className="mt-1 righteous">This content was not found.</h1>
+      <h3 className="courier-prime">error</h3>
+    <h1 className="mt-1 righteous">{error.statusText || error.message}</h1>
     <p className="c-1 poppins">Try checking url or connecting to other network.</p>
-      <p className="c-1 courier-prime">
-        <i>{error.statusText || error.message}</i>
-      </p>
     </div>
       <Footer />
     </>
