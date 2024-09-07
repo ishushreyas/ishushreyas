@@ -9,6 +9,12 @@ body{
 .h-100{
   min-height: calc(100vh - 180px);
 }
+.cw-1{
+  width: 300px; 
+}
+.cw-2{
+  width: 250px;
+}
 .t-1{
   font-size: 5rem;
   font-weight: bold;

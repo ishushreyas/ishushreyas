@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"ishushreyas/backend/models"
 	"net/http"
 )
@@ -15,11 +14,12 @@ func RequestContact(w http.ResponseWriter, r *http.Request) {
 
 	var contact models.Contact
 
-	err := json.NewDecoder(r.Body).Decode(&contact)
-	if err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&contact); err != nil {
 		http.Error(w, "Invalid Input", http.StatusBadRequest)
 		return
 	}
 
-	fmt.Fprintf(w, "Name: %s, Email: %s, Message: %s", contact.Name, contact.Email, contact.Message)
+	if err := SendContactJSON(w, http.StatusOK, contact); err != nil {
+		http.Error(w, "Error parsing form details.", http.StatusBadRequest)
+	}
 }
