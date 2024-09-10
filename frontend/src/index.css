@@ -102,10 +102,10 @@ body{
   color: #666;
 }
 .bg-1{
-  background-color: #fff;
+  background-color: #fefefe;
 }
 .bg-2{
-  background-color: #000;
+  background-color: #f7f7f5;
 }
 .flex{
   display: flex;
@@ -153,6 +153,9 @@ body{
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
 }
 .bs-2{
+  box-shadow: 0 0 8px rgb(0, 0, 0, 0.02);
+}
+.bs-3{
   box-shadow: 0 0 4px rgb(0, 0, 0, 0.02);
 }
 .br-1{

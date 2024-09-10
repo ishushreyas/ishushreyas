@@ -30,7 +30,7 @@ export default function Contact() {
     <div className="m-1 p-1">
       <h1 className="righteous">Contact Me</h1>
       <div className="flex j-c a-i">
-        <div className='bs-1 bg-1 br-2 p-3 cw-1'>
+        <div className='bs-1 bg-2 br-2 p-3 cw-1'>
           <label className="flex j-l a-i"><span className="material-symbols-rounded">person</span><p className="poppins">Name: </p></label>
           <input type="text" placeholder="John Smith" ref={nameRef} className="bs-2 bd-0 br-2 cw-2 t-5 p-2 poppins"/>
           <label className="flex j-l a-i"><span className="material-symbols-rounded">email</span><p className="poppins">Email: </p></label>
