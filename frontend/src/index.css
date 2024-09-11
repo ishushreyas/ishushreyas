@@ -13,7 +13,7 @@ body{
   width: 300px; 
 }
 .cw-2{
-  width: 250px;
+  width: 260px;
 }
 .t-1{
   font-size: 5rem;
@@ -144,10 +144,10 @@ body{
   }
 }
 .bd-0{
-  border: solid 2px #999;
+  border: solid 1px #999;
 }
 .bd-1{
-  border: solid 2px #fff;
+  border: solid 1px #fff;
 }
 .bs-1{
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
