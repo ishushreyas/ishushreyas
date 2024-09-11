@@ -19,7 +19,13 @@ func RequestContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := SendContactJSON(w, http.StatusOK, contact); err != nil {
+	response := map[string]interface{} {
+		"message": "Thanks for your interest.",
+		"data":    contact,
+		"code": 0,
+	}
+
+	if err := SendJSONResponse(w, http.StatusOK, response); err != nil {
 		http.Error(w, "Error parsing form details.", http.StatusBadRequest)
 	}
 }

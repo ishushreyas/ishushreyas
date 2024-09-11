@@ -2,14 +2,13 @@ package controllers
 
 import (
 	"encoding/json"
-	"ishushreyas/backend/models"
 	"net/http"
 )
 
-func SendContactJSON(w http.ResponseWriter, s int, c models.Contact) error {
+func SendJSONResponse(w http.ResponseWriter, s int, m map[string]interface{}) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(s)
-	if err := json.NewEncoder(w).Encode(c); err != nil {
+	if err := json.NewEncoder(w).Encode(m); err != nil {
 		return err
 	}
 	return nil
