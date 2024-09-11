@@ -101,6 +101,9 @@ body{
 .c-1{
   color: #666;
 }
+.bg-0{
+  background-color: rgba(202, 202, 202, 0.6);
+}
 .bg-1{
   background-color: #fefefe;
 }
