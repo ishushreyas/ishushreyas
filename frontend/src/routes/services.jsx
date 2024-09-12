@@ -5,8 +5,8 @@ const Services = () => {
     <div className="m-1 p-1">
       <h1 className="righteous">Services</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div className='bs-1 br-2 bg-1 m-1 p-1'>
-        <h3 className='t-6 poppins'>Static Website</h3>
+      <div className='bs-1 br-2 bg-1 m-1 p-1 hv:cd-1'>
+        <h3 className='t-6 m-0 poppins'>Static Website</h3>
         <p className='poppins'>I use React framework to create Static website.</p>
       </div>
       <div className='bs-1 br-2 bg-1 m-1 p-1'>
