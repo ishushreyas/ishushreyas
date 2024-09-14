@@ -4,7 +4,7 @@ import AboutMe from "./routes/about";
 import Contact from "./routes/contact";
 import Projects from './routes/projects';
 import Services from './routes/services';
-//import Forum from './routes/forum';
+import Forum from './routes/forum';
 import { loader as contentsLoader, Contents } from './routes/contents';
 import Content from './routes/content';
 import ErrorPage from "./routes/error-page";
@@ -51,6 +51,14 @@ const router = createBrowserRouter([
         path: "contents",
         element: <Contents />,
         loader: contentsLoader,
+      },
+      {
+        path: "content/:id",
+        element: <Content />,
+      },
+      {
+        path: "forum",
+        element: <Forum />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export async function loader() {
@@ -23,7 +23,7 @@ export function Contents() {
         <ul>
           {contents.map((content) => (
             <li key={content.id}>
-              <Link to={`contacts/${content.id}`}>
+              <Link to={`content/${content.id}`}>
                 {content.first || content.last ? (
                   <>
                     {content.first} {content.last}
