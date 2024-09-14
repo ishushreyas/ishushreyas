@@ -25,14 +25,18 @@ export function Contents() {
       {contents.length ? (
         <ul>
           {contents.map((content) => (
-            <li key={content.ID}>
-              <Link to={`content/${content.ID}`}>
+            <li className='ls-0' key={content.ID}>
+              <div className='m-1 p-1 bg-1 bs-2 br-1'>
+              <Link to={`./content/${content.ID}`}>
                 {content.Title || <i>No Title</i>}
                 {content.Tags && content.Tags.length > 0 && (
-                  <span>{` [Tags: ${content.Tags.join(', ')}]`}</span>
+                  <span>{content.Tags.map((tag) => (
+                    <span className='p-2 m-1 bs-3 bg-2 br-1 ls-0 c-1 courier-prime'>{ tag }</span>
+                  ))}</span>
                 )}
                 {content.Author && <span> (by {content.Author})</span>}
               </Link>
+              </div>
             </li>
           ))}
         </ul>
