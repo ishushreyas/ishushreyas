@@ -1,10 +1,15 @@
 package main
 
 import (
+	"ishushreyas/backend/database"
 	"ishushreyas/backend/router"
 	"log"
 	"net/http"
 )
+
+func init() {
+    database.Connect()
+}
 
 var SITE_URL = "https://ishushreyas.vercel.app"
 func enableCors(next http.Handler) http.Handler {

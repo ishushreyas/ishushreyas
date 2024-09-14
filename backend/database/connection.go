@@ -16,6 +16,7 @@ func init() {
 	URI_STRING = os.Getenv("MONGODB_URI")
 	if URI_STRING == "" {
 		log.Println("Environment Variable Not Found ")
+		URI_STRING = "mongodb+srv://global:1lIkisCphT8WZSJC@cluster0.zvhjy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 	} else {
 		log.Println("Environment variable found")
 	}
