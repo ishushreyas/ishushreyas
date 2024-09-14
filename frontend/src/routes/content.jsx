@@ -28,8 +28,16 @@ const Content = () => {
   }
 
   return (
-    <div>
-      <h1 className='m-1 p-1 righteous'>{content.Title}</h1>
+    <div className='m-1 p-1 bg-1 bs-2 br-1'>
+      <h1 className='righteous'>{content.Title}</h1>
+      {content.Tags && content.Tags.length > 0 && (
+        <span>{content.Tags.map((tag) => (
+          <span className='p-2 m-1 bs-3 bg-2 br-1 ls-0 c-1 courier-prime'>{ tag }</span>
+        ))}</span>
+      )}
+      <p className='poppins'>{content.Author}</p>
+      <p className='poppins'>{content.CreatedAt}</p>
+      <p className='poppins'>{content.UpdatedAt}</p>
       <p className='poppins'>{content.Content}</p>
     </div>
   );
