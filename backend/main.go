@@ -7,10 +7,6 @@ import (
 	"net/http"
 )
 
-func init() {
-    database.Connect()
-}
-
 var SITE_URL = "https://ishushreyas.vercel.app"
 func enableCors(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -33,6 +29,7 @@ func enableCors(next http.Handler) http.Handler {
 }
 
 func main() {
+    database.Connect()
 	mux := router.SetUpRoutes()
 	log.Fatal(http.ListenAndServe(":8080", enableCors(mux)))
 }

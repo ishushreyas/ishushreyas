@@ -10,53 +10,68 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
+var blogCollection *mongo.Collection = database.GetCollection(database.DB, "blog")
+
 func ListAllBlogPosts(w http.ResponseWriter, r *http.Request) {
-	collection := database.GetCollection("blog")
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+    cursor, err := blogCollection.Find(context.Background(), bson.M{})
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    defer cursor.Close(context.Background())
 
-	// Define the projection to return only the 'title' field
-	filter := bson.M{} // Empty filter to fetch all documents
-	projection := bson.M{"title": 1, "tags": 1, "_id": 0} // Only return title, exclude _id
-
-	cursor, err := collection.Find(ctx, filter, options.Find().SetProjection(projection))
-	if err != nil {
-		log.Fatal(err)
-	}
-	var blogs []bson.M
-	if err = cursor.All(ctx, &blogs); err != nil {
-		log.Fatal(err)
-	}
+    var blogs []models.BlogPost
+    if err := cursor.All(context.Background(), &blogs); err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
 
 	data := map[string]interface{} {
 		"message": "Blog Posts",
-		"data": blogs,
-		"code": 0,
+		"data":    blogs,
+		"code":    0,
 	}
-	
-	// Return the titles
-	SendJSONResponse(w, http.StatusAccepted, data)
+
+	// Ensure that the response is sent correctly
+	if err := SendJSONResponse(w, http.StatusOK, data); err != nil {
+		log.Printf("Error sending JSON response: %v", err)
+	}
 }
 
 func GetBlogPostById(w http.ResponseWriter, r *http.Request) {
-	coll := database.GetCollection("blogs")
-
-	blogId, _ := primitive.ObjectIDFromHex(r.URL.Query().Get("id"))
-	var blogPost models.BlogPost
-	err := coll.FindOne(context.TODO(), bson.M{"_id": blogId}).Decode(&blogPost)
+	blogId, err := primitive.ObjectIDFromHex(r.URL.Query().Get("id"))
 	if err != nil {
-		http.Error(w, "Post Not Found", http.StatusNotFound)
+		log.Printf("Invalid Post ID: %v", err)
+		http.Error(w, "Invalid Post ID", http.StatusBadRequest)
 		return
 	}
 
-	data := map[string]interface{} {
-		"message": "Blog Found",
-		"data": blogPost,
-		"code": 0,
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	var blogPost models.BlogPost
+	err = blogCollection.FindOne(ctx, bson.M{"_id": blogId}).Decode(&blogPost)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			log.Printf("Post not found: %v", err)
+			http.Error(w, "Post Not Found", http.StatusNotFound)
+		} else {
+			log.Printf("Error finding blog post: %v", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		}
+		return
 	}
 
-	SendJSONResponse(w, http.StatusAccepted, data)
+	data := map[string]interface{}{
+		"message": "Blog Found",
+		"data":    blogPost,
+		"code":    0,
+	}
+
+	if err := SendJSONResponse(w, http.StatusOK, data); err != nil {
+		log.Printf("Error sending JSON response: %v", err)
+	}
 }
