@@ -13,7 +13,7 @@ export async function loader() {
   }
 }
 
-export default function Contents() {
+export function Contents() {
   const { contents } = useLoaderData();
 
   return (
