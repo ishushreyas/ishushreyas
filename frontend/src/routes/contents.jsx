@@ -6,7 +6,7 @@ export async function loader() {
   
   try {
     const response = await axios.get(SERVER_URL);
-    return { contents: response.data.data };
+    return { contents: response.data };
   } catch (error) {
     console.error("Error fetching contents", error);
     return { contents: [] }; // Return an empty array in case of error
@@ -19,7 +19,7 @@ export function Contents() {
   return (
     <>
     <span>{ contents }</span>
-      {contents.length ? (
+      { contents.length ? (
         <ul>
           {contents.map((content) => (
             <li key={content.id}>
