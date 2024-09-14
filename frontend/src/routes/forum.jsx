@@ -27,11 +27,11 @@ const Forum = () => {
         <button className="bs-1 t-5 m-3 p-3 br-1 poppins">Send Message</button>
       </div>
       <ul>
-        {messages.map((message) => (
+        {/*messages.map((message) => (
           <li key={message.id}>
             <Message message={message} />
           </li>
-        ))}
+        ))*/}
       </ul>
     </div>
   );

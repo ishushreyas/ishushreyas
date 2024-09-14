@@ -12,6 +12,7 @@ const Content = () => {
   
   try {
     const response = await axios.get(SERVER_URL);
+    setContent(response.data.data);
     return { contents: response.data.data };
   } catch (error) {
     console.error("Error fetching contents", error);
