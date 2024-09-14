@@ -18,19 +18,19 @@ export function Contents() {
 
   return (
     <>
-      {contents.length ? (
+      {contents.data.length ? (
         <ul>
-          {contents.map((contact) => (
-            <li key={contact.id}>
-              <Link to={`contacts/${contact.id}`}>
-                {contact.first || contact.last ? (
+          {contents.map((content) => (
+            <li key={content.id}>
+              <Link to={`contacts/${content.id}`}>
+                {content.first || content.last ? (
                   <>
-                    {contact.first} {contact.last}
+                    {content.first} {content.last}
                   </>
                 ) : (
                   <i>No Name</i>
                 )}
-                {contact.favorite && <span>★</span>}
+                {content.favorite && <span>★</span>}
               </Link>
             </li>
           ))}
