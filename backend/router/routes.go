@@ -1,8 +1,8 @@
 package router
 
 import (
-	"net/http"
 	"ishushreyas/backend/controllers"
+	"net/http"
 )
 
 func SetUpRoutes() *http.ServeMux {
