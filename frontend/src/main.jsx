@@ -5,7 +5,7 @@ import Contact from "./routes/contact";
 import Projects from './routes/projects';
 import Services from './routes/services';
 //import Forum from './routes/forum';
-//import { loader as contentsLoader, Contents} from './routes/contents';
+import { loader as contentsLoader, Contents} from './routes/contents';
 import Content from './routes/content';
 import ErrorPage from "./routes/error-page";
 import React from "react";
@@ -46,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: "about-this-site",
         element: <AboutSite />,
+      },
+      {
+        path: "contents",
+        element: <Contents />,
+        loader: contentsLoader,
       },
     ],
   },

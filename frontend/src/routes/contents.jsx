@@ -1,22 +1,18 @@
 import { useLoaderData } from 'react-router-dom';
+import axios from 'axios';
 
 export async function loader() {
-  return {
-    contents: [
-      {
-        title: 'About Me',
-        path: '/about-me',
-      },
-      {
-        title: 'Projects',
-        path: '/projects',
-      },
-      {
-        title: 'Contact Me',
-        path: '/contact-me',
-      },
-    ],
-  }
+  const SERVER_URL = "https://ishushreyas.up.railway.app/contents";
+  const contents = () => {
+    axios.get(SERVER_URL)
+    .then((response) => {
+      return response.data
+    }).catch((error) => {
+      console.error("Error fetching blogs");
+    })
+    return {}
+  };
+  return { contents }
 }
 
 export default function Contents() {
