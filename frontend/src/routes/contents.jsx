@@ -21,13 +21,13 @@ export function Contents() {
 
   return (
     <>
-      <h1>Contents</h1>
+      <h1 className='m-1 p-1 t-3 righteous'>Contents</h1>
       {contents.length ? (
         <ul>
           {contents.map((content) => (
             <li className='ls-0' key={content.ID}>
               <div className='m-1 p-1 bg-1 bs-2 br-1'>
-              <Link to={`./content/${content.ID}`}>
+              <Link className='td-0 c-0' to={`./content/${content.ID}`}>
                 {content.Title || <i>No Title</i>}
                 {content.Tags && content.Tags.length > 0 && (
                   <span>{content.Tags.map((tag) => (
