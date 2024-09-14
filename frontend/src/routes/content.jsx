@@ -8,12 +8,15 @@ const Content = () => {
 
   useEffect(() => {
     const fetchContent = async () => {
-      try {
-        const response = await axios.get(`/api/content/${id}`);
-        setContent(response.data);
-      } catch (error) {
-        console.error('Error fetching content:', error);
-      }
+      const SERVER_URL = `https://ishushreyas.up.railway.app/content/${id}`;
+  
+  try {
+    const response = await axios.get(SERVER_URL);
+    return { contents: response.data };
+  } catch (error) {
+    console.error("Error fetching contents", error);
+    return { contents: [] }; // Return an empty array in case of error
+  }
     };
 
     fetchContent();
