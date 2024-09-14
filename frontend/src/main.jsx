@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         loader: contentsLoader,
       },
       {
-        path: "content/:id",
+        path: "contents/:id",
         element: <Content />,
       },
       {
