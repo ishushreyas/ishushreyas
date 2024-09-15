@@ -1,6 +1,12 @@
-# Ishu Shreyas
+# Hey 👋
+I am Ishu Shreyas😄
 
-> This is my portfolio website.
-> I am using React for Frontend and GoLang for Backend 
+**Programming Languages**
+   - JavaScript☕
+   - Go❤️
 
-[my website](https://ishushreyas.vercel.app/)
+**Framework**
+  - React😎
+
+
+[My Portfolio Website 🌐](https://ishushreyas.vercel.app/)
