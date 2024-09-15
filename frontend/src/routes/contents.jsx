@@ -21,7 +21,7 @@ export function Contents() {
 
   return (
     <>
-      <h1 className='m-1 p-1 t-6 righteous'>Contents</h1>
+      <h1 className='m-1 p-1 righteous'>Contents</h1>
       {contents.length ? (
         <ul className='m-0 p-0'>
           {contents.map((content) => (
