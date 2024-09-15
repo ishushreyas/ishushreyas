@@ -164,7 +164,7 @@ body{
 .bs-3{
   box-shadow: 0 0 4px rgb(0, 0, 0, 0.02);
 }
-.hv\:cd-1:hover{
+.hv\:cd-1:hover {
   box-shadow: 12px 12px 12px rgb(0, 0, 0, 0.2), -10px -10px -10px white;
   transition: all ease 0.35s;
 }
