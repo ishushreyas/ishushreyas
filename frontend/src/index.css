@@ -108,6 +108,9 @@ body{
   background-color: #fefefe;
 }
 .bg-2{
+  background-color: #f9f9f9;
+}
+.bg-3{
   background-color: #f7f7f5;
 }
 .flex{
@@ -162,8 +165,7 @@ body{
   box-shadow: 0 0 4px rgb(0, 0, 0, 0.02);
 }
 .hv\:cd-1:hover{
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
-  transform: scale(1.05);
+  box-shadow: 12px 12px 12px rgb(0, 0, 0, 0.2), -10px -10px -10px white;
   transition: all ease 0.35s;
 }
 .br-1{
