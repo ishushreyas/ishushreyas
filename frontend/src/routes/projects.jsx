@@ -4,6 +4,12 @@ import ProjectCard from '../components/ProjectCard';
 const projects = [
   {
     title: 'Chat Bot',
+    description: 'This is a chat bot made using Go and React framework.',
+    tags: ['golang', 'react', 'chatbot', 'gemini'],
+    link: 'https://gemini-project.vercel.app',
+  },
+  {
+    title: 'Chat Bot 2',
     description: 'This is a chat bot made using Flask framework.',
     tags: ['python', 'flask', 'chatbot'],
     link: 'https://ishushreyas.pythonanywhere.com',
