@@ -99,11 +99,11 @@ textarea:focus-visible{
 .ls-0{
   list-style-type: none;
 }
-.righteous{
+.righteous {
   font-family: 'Righteous';
 }
-.poppins{
-  font-family: 'Poppins';
+.p{
+  font-family: 'Montserrat';
 }
 .courier-prime{
   font-family: 'Courier Prime';
