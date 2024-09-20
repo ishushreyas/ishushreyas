@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
       <Link className="td-0 c-0" to={project.link}>
         <h3 className="t-6 m-0 mt-2 p">{project.title}</h3> 
       {project.tags.map((item) => {
-        return <li className="p-2 m-1 bd-1 bg-3 br-1 ls-0 c-1 courier-prime" key={item}>{item}</li>
+        return <span className="p-2 m-1 bd-1 bg-3 br-1 c-1 courier-prime" key={item}>{item}</span>
       })}
         <p className="m-0 t-5 p">{project.description}</p>
         </Link>
