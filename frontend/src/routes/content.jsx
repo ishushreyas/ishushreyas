@@ -28,19 +28,33 @@ const Content = () => {
   }
 
   return (
-    <div className='m-1 p-1 bg-1 bs-2 br-1'>
-      <h1 className='righteous'>{content.Title}</h1>
-      {content.Tags && content.Tags.length > 0 && (
-        <span>{content.Tags.map((tag) => (
-          <span className='p-2 m-1 bs-3 bg-2 br-1 ls-0 c-1 courier-prime'>{ tag }</span>
-        ))}</span>
-      )}
-      <p className='poppins'>{content.Author}</p>
-      <p className='poppins'>{content.CreatedAt}</p>
-      <p className='poppins'>{content.UpdatedAt}</p>
-      <p className='poppins'>{content.Content}</p>
-    </div>
-  );
+  <div className='m-1 p-1 bg-1 bs-2 br-1'>
+    <h1 className='righteous'>{content.Title}</h1>
+    {content.Tags && content.Tags.length > 0 && (
+      <span>{content.Tags.map((tag, index) => (
+        <span key={index} className='p-2 m-1 bs-3 bg-2 br-1 ls-0 c-1 courier-prime'>{tag}</span>
+      ))}</span>
+    )}
+    <p className='courier-prime'>{content.Author}</p>
+    <p className='p'>
+      <strong>Created at: </strong>
+      {new Date(content.CreatedAt).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </p>
+    <p className='p'>
+      <strong>Updated at: </strong>
+      {new Date(content.UpdatedAt).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </p>
+    <p className='p'>{content.Content}</p>
+  </div>
+);
 };
 
 export default Content;
