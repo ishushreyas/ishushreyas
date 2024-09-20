@@ -37,18 +37,9 @@ const Content = () => {
     )}
     <p className='courier-prime'>{content.Author}</p>
     <p className='p'>
-      <strong>Created at: </strong>
       {new Date(content.CreatedAt).toLocaleString('en-US', {
         year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })}
-    </p>
-    <p className='p'>
-      <strong>Updated at: </strong>
-      {new Date(content.UpdatedAt).toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'long',
+        month: 'numeric',
         day: 'numeric'
       })}
     </p>
