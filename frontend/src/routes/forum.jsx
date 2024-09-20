@@ -24,7 +24,7 @@ const Forum = () => {
     <div className="p-1">
       <h1 className="righteous">Forum</h1>
       <div className="flex j-s a-i">
-        <button className="bs-1 t-5 m-3 p-3 br-1 poppins">Send Message</button>
+        <button className="bd-1 m-3 p-3 br-1 p">Send Message</button>
       </div>
       <ul>
         {/*messages.map((message) => (
