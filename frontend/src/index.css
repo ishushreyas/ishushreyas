@@ -153,6 +153,9 @@ textarea:focus-visible{
 .a-s{
   align-items: start;
 }
+.wrap {
+  flex-wrap: wrap;
+}
 .text-grad{
   background-clip: text;
   -webkit-background-clip: text;
