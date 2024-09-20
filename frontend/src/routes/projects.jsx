@@ -6,7 +6,7 @@ const projects = [
     title: 'Chat Bot',
     description: 'This is a chat bot made using Go and React framework.',
     tags: ['golang', 'react', 'chatbot', 'gemini'],
-    link: 'https://gemini-project.vercel.app',
+    link: 'https://gemini-project.onrender.com',
   },
   {
     title: 'Chat Bot 2',
