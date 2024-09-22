@@ -1,10 +1,17 @@
 package controllers
 
 import (
+	"context"
 	"encoding/json"
+	"ishushreyas/backend/database"
 	"ishushreyas/backend/models"
+	"log"
 	"net/http"
+
+	"go.mongodb.org/mongo-driver/mongo"
 )
+
+var contactCollection *mongo.Collection = database.GetCollection(database.DB, "contacts")
 
 func RequestContact(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost{
@@ -19,9 +26,14 @@ func RequestContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	result, err := contactCollection.InsertOne(context.TODO(), contact)
+	if err != nil {
+		log.Fatalf("error : %v", err.Error())
+	}
+
 	response := map[string]interface{} {
 		"message": "Thanks for your interest.",
-		"data":    contact,
+		"data":    result,
 		"code": 0,
 	}
 
