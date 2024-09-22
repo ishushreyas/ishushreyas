@@ -6,6 +6,28 @@ body{
   height: 100vh;
   width: 100v;
 }
+button, input, textarea {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible,
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible{
+  outline: 4px auto -webkit-focus-ring-color;
+}
 .h-100{
   min-height: calc(100vh - 180px);
 }
@@ -77,11 +99,11 @@ body{
 .ls-0{
   list-style-type: none;
 }
-.righteous{
+.righteous {
   font-family: 'Righteous';
 }
-.poppins{
-  font-family: 'Poppins';
+.p{
+  font-family: 'Montserrat';
 }
 .courier-prime{
   font-family: 'Courier Prime';
@@ -131,6 +153,9 @@ body{
 .a-s{
   align-items: start;
 }
+.wrap {
+  flex-wrap: wrap;
+}
 .text-grad{
   background-clip: text;
   -webkit-background-clip: text;
@@ -150,10 +175,10 @@ body{
   }
 }
 .bd-0{
-  border: solid 1px #999;
+  border: solid 0.7px #999;
 }
 .bd-1{
-  border: solid 1px #fff;
+  border: solid 0.7px rgb(196, 200, 209);
 }
 .bs-1{
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
