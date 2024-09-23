@@ -7,6 +7,7 @@ import (
 	"ishushreyas/backend/models"
 	"log"
 	"net/http"
+	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -25,6 +26,8 @@ func RequestContact(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid Input", http.StatusBadRequest)
 		return
 	}
+
+	contact.CreatedAt = time.Now()
 
 	result, err := contactCollection.InsertOne(context.TODO(), contact)
 	if err != nil {
