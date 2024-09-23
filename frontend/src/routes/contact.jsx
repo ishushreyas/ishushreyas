@@ -26,6 +26,11 @@ export default function Contact() {
   })
   .then(response => response.text())
   .then(data => console.log(data))
+  .then(setFormData({
+    name: '',
+    email: '',
+    message: '',
+  })) 
   .catch(error => console.error('Error:', error));
   }
 
@@ -35,11 +40,11 @@ export default function Contact() {
       <div className="flex j-c a-i">
         <div className='bs-2 bd-1 bg-1 br-2 p-3 cw-1'>
           <label className="flex j-l a-i"><span className="material-symbols-rounded">person</span><p className="p">Name: </p></label>
-          <input type="text" name='name' placeholder="John Smith" onChange={onChangeHandler} className="bd-1 cw-2 p"/>
+          <input type="text" name='name' placeholder="John Smith" onChange={onChangeHandler} className="bd-1 cw-2 p" value={formData.name}/>
           <label className="flex j-l a-i"><span className="material-symbols-rounded">email</span><p className="p">Email: </p></label>
-          <input type="email" name='email' placeholder="someone@gmail.com" onChange={onChangeHandler} className="bd-1 cw-2 p"/>
+          <input type="email" name='email' placeholder="someone@gmail.com" onChange={onChangeHandler} className="bd-1 cw-2 p" value={formData.email}/>
           <label className="flex j-l a-i"><span className="material-symbols-rounded">message</span><p className="p">Message: </p></label>
-          <textarea name='message' placeholder="Message..." onChange={onChangeHandler} className="bd-1 cw-2 p"></textarea> <br />
+          <textarea name='message' placeholder="Message..." onChange={onChangeHandler} className="bd-1 cw-2 p" value={formData.message}></textarea> <br />
           <Form
                 method="post"
                 action="contact"
