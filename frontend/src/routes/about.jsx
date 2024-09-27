@@ -27,6 +27,8 @@ const AboutMe = () => {
       </div>
       <h2 className="t-6 p">Work</h2>
       <p className="p">Currently I am working as a founding member of <Link className="td-0 c-1 courier-prime" to="https://bnstech.online/">BnS Tech</Link>.</p>
+      <h2 className='t-6 p'>Sponser</h2>
+      <iframe src="https://github.com/sponsors/ishushreyas/button" title="Sponsor ishushreyas" height="32" width="114" style={{border: '0', borderRadius: '6px'}}></iframe>
     </div>
   );
 };
