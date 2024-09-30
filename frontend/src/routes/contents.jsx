@@ -31,7 +31,7 @@ export function Contents() {
                 <p>{content.Title || <i>No Title</i>}</p>
                 {content.Tags && content.Tags.length > 0 && (
                   <span>{content.Tags.map((tag) => (
-                    <span key={index} className='p-2 mr-1 bs-3 glass bd-1 br-1 ls-0 c-2 fw-1'>{tag}</span>
+                    <span className='p-2 mr-1 bs-3 glass br-1 ls-0 fw-1'>{tag}</span>
                   ))}</span>
                 )}
                 </div>
