@@ -61,6 +61,9 @@ textarea:focus-visible{
 .t-6{
   font-size: 1.5rem;
 }
+.fw-1{
+  font-weight: 700;
+}
 .td-0{
   text-decoration: none;
 }
@@ -84,6 +87,9 @@ textarea:focus-visible{
 }
 .mt-2{
   margin-top: 12px;
+}
+.mr-1{
+  margin-right: 12px;
 }
 .p-0{
   padding: 0;
@@ -126,6 +132,9 @@ textarea:focus-visible{
 }
 .c-1{
   color: #666;
+}
+.c-2{
+  color: #fff;
 }
 .bg-0{
   background-color: rgba(232, 232, 232, 0.4);
