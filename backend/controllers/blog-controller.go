@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	"cloud.google.com/go/storage"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -65,6 +66,11 @@ func GetBlogPostById(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	blogPost.Image, err = generateImageUrl(blogPost.Image)
+	if err != nil {
+		log.Fatalf("err generate url %v", err.Error())
+	}
+
 	data := map[string]interface{}{
 		"message": "Blog Found",
 		"data":    blogPost,
@@ -74,4 +80,14 @@ func GetBlogPostById(w http.ResponseWriter, r *http.Request) {
 	if err := SendJSONResponse(w, http.StatusOK, data); err != nil {
 		log.Printf("Error sending JSON response: %v", err)
 	}
+}
+
+func generateImageUrl(fileName string) (string, error) {
+	opts := &storage.SignedURLOptions{
+		Scheme: storage.SigningSchemeV4,
+		Method: "GET",
+		Expires: time.Now().Add(15 * time.Minute),
+	}
+	url, err := database.StorageClient.Bucket("ishu-shreyas.appspot.com").SignedURL(fileName, opts)
+	return url, err
 }

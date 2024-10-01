@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 
 const Content = () => {
@@ -32,7 +33,7 @@ const Content = () => {
     <h1 className='righteous'>{content.Title}</h1>
     {content.Tags && content.Tags.length > 0 && (
       <span>{content.Tags.map((tag, index) => (
-        <span key={index} className='p-2 m-1 bs-3 bg-2 br-1 ls-0 c-1 courier-prime'>{tag}</span>
+        <span key={index} className='p-2 m-1 bs-3 bg-2 br-1 ls-0 courier-prime'>{tag}</span>
       ))}</span>
     )}
     <p className='courier-prime'>{content.Author}</p>
@@ -43,7 +44,8 @@ const Content = () => {
         day: 'numeric'
       })}
     </p>
-    <p className='p'>{content.Content}</p>
+    <img className='br-1 bs-2' src={content.Image} />
+    <p className='p'><ReactMarkdown>{content.Content}</ReactMarkdown></p>
   </div>
 );
 };

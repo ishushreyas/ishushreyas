@@ -30,6 +30,7 @@ func enableCors(next http.Handler) http.Handler {
 
 func main() {
     database.Connect()
+    database.StorageInit()
 	mux := router.SetUpRoutes()
 	log.Fatal(http.ListenAndServe(":8080", enableCors(mux)))
 }

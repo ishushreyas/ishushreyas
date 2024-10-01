@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func EnvMongoURI() string {
+func LoadEnv(name string) string {
     // Load env only in development (optional)
     if os.Getenv("RAILWAY_ENVIRONMENT") == "" {
         err := godotenv.Load()
@@ -15,9 +15,9 @@ func EnvMongoURI() string {
         }
     }
     
-    mongoURI := os.Getenv("MONGOURI")
+    mongoURI := os.Getenv(name)
     if mongoURI == "" {
-        panic("MONGOURI not found in environment variables")
+        panic("Var not found in environment variables")
     }
     
     return mongoURI
