@@ -28,12 +28,23 @@ textarea:focus,
 textarea:focus-visible{
   outline: 4px auto -webkit-focus-ring-color;
 }
+pre {
+  padding: 10px;
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  color: #fff;
+}
 .h-100{
   min-height: calc(100vh - 180px);
 }
+.card-1 {
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  width: clamp(250px, 50%, 600px);
+}
 .glass{
   backdrop-filter: saturate(180%) blur(20px); 
-  background: rgb(0,0,0,0.02);
+  background-color: rgba(0,0,0,0.02);
 }
 .cw-1{
   width: 300px; 
