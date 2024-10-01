@@ -33,7 +33,7 @@ const Content = () => {
     <h1 className='p fw-1'>{content.Title}</h1>
     {content.Tags && content.Tags.length > 0 && (
       <span>{content.Tags.map((tag, index) => (
-        <span key={index} className='p-2 m-1 bs-3 glass bd-1 br-1 ls-0 c-2 fw-1'>{tag}</span>
+        <span key={index} className='p-2 m-1 bs-3 glass bd-1 br-1 ls-0 c-1 fw-1'>{tag}</span>
       ))}</span>
     )}
     <p className='courier-prime'>{content.Author}</p>
@@ -44,7 +44,7 @@ const Content = () => {
         day: 'numeric'
       })}
     </p>
-    <img className='br-1 bs-2' src={content.Image} />
+    <img className='br-1 bs-2 card-1' src={content.Image} />
     <p className='p'><ReactMarkdown>{content.Content}</ReactMarkdown></p>
   </div>
 );
