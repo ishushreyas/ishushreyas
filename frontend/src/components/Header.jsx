@@ -33,8 +33,10 @@ const Header = () => {
   };
 
   return (
+    <>
     <header className={`header ${ scrollYValue > 1  ? "scrolled" : ""}`}>
       <Link className="t-7 logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</Link>
+    </header>
       <nav onClick={toggleMenu} className={`nav glass ${isOpen ? "open" : ""}`}>
         <ul>
             <li>
@@ -60,7 +62,7 @@ const Header = () => {
       <div className="toggle-button" onClick={toggleMenu}>
         <span className="material-symbols-rounded c-1 p-1">{isOpen ? "close" : "menu"}</span>
       </div>
-    </header>
+    </>
   );
 };
 
