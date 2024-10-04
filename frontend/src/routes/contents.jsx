@@ -31,10 +31,10 @@ export function Contents() {
                 <img className='br-1' src={content.Image} />
               </div>
               <div className='p-1 hv:cd-1 p'>
-                <p className="fw-1">{content.Title || <i>No Title</i>}</p>
+                <p className="fw-1 t-4 sora">{content.Title || <i>No Title</i>}</p>
                 {content.Tags && content.Tags.length > 0 && (
                   <span>{content.Tags.map((tag) => (
-                    <span className='p-5 ml-0 bs-3 p bg-grad br-1 ls-0 fw-1'>{tag}</span>
+                    <span className='p-5 ml-0 bs-2 p bg-4 br-3 ls-0'>{tag}</span>
                   ))}</span>
                 )}
                 </div>

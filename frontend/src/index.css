@@ -185,9 +185,6 @@ pre {
 .c-2{
   color: #fff;
 }
-.bg-grad{
-  background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
-}
 .bg-0{
   background-color: rgba(232, 232, 232, 0.4);
 }
@@ -199,6 +196,9 @@ pre {
 }
 .bg-3{
   background-color: #f7f7f5;
+}
+.bg-4{
+  background-color: rgb(247, 236, 250);
 }
 .flex{
   display: flex;
