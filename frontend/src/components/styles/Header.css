@@ -29,6 +29,7 @@
 .nav {
   display: flex;
   gap: 20px;
+  z-index: 10;
 }
 
 .nav a {
@@ -78,6 +79,8 @@
   /* Show the navigation when open */
   .nav.open {
     right: 0;
+    backdrop-filter: saturate(180%) blur(20px); 
+    background: rgb(0,0,0,0.02);
   }
 }
 
