@@ -34,7 +34,7 @@ export function Contents() {
                 <p className="fw-1">{content.Title || <i>No Title</i>}</p>
                 {content.Tags && content.Tags.length > 0 && (
                   <span>{content.Tags.map((tag) => (
-                    <span className='p-5 ml-0 bs-3 p bg-2 br-1 ls-0 fw-1'>{tag}</span>
+                    <span className='p-5 ml-0 bs-3 p bg-grad br-1 ls-0 fw-1'>{tag}</span>
                   ))}</span>
                 )}
                 </div>

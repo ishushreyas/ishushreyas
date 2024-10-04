@@ -53,6 +53,8 @@ pre {
 .thumbnail-wrapper {
   position: relative;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   padding-top: calc(100% / (16 / 9));
   overflow: hidden;
 }
@@ -182,6 +184,9 @@ pre {
 }
 .c-2{
   color: #fff;
+}
+.bg-grad{
+  background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
 }
 .bg-0{
   background-color: rgba(232, 232, 232, 0.4);
