@@ -30,8 +30,8 @@ func ListAllBlogPosts(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-	for _, blog := range blogs {
-		blog.Image, _ = generateImageUrl(blog.Image)
+	for i := range blogs {
+		blogs[i].Image, _ = generateImageUrl(blogs[i].Image)
 	}
 
 	data := map[string]interface{} {
