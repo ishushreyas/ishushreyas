@@ -61,21 +61,22 @@
 
   /* Hide the navigation by default on mobile */
   .nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
+    display: block;
+    /*flex-direction: column;*/
+    position: fixed;
     top: 60px;
-    left: 0;
-    width: calc(100% - 20px);
+    right: 200px;
+    width: 270px;
     padding: 10px;
     border-radius: 8px;
     overflow: hidden;
-    background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));
+    transition: all ease o.3s;
+    /*background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));*/
   }
 
   /* Show the navigation when open */
   .nav.open {
-    display: flex;
+    right: 0;
   }
 }
 
