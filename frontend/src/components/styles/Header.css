@@ -93,7 +93,7 @@ nav ul li {
     pointer-events: none; /* Disable interaction when closed */
   }
 
-  .scrolled .nav {
+  .nav {
     backdrop-filter: saturate(180%) blur(20px);
     background: rgba(0, 0, 0, 0.02);
   }
