@@ -49,8 +49,7 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <div className={`header ${scrollYValue > 0 ? "scrolled" : ""}`}>
+    <header className={`header ${scrollYValue > 0 ? "scrolled" : ""}`}>
       <NavLink className="t-7 logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</NavLink>
       <div 
         className="toggle-button" 
@@ -61,7 +60,6 @@ const Header = () => {
         <span className="material-symbols-rounded c-1 p-1">
           {isOpen ? "close" : "menu"}
         </span>
-      </div>
       </div>
       <nav id="navigation" onClick={handleNavClick} className={`nav ${isOpen ? "open" : ""}`}>
         <ul>
