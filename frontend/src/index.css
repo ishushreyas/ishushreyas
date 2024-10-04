@@ -53,7 +53,7 @@ pre {
 .thumbnail-wrapper {
   position: relative;
   width: 100%;
-  padding-top: calc(100% / (16 / 3)); /* 16:3 aspect ratio */
+  padding-top: calc(100% / (16 / 9));
   overflow: hidden;
 }
 

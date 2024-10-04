@@ -44,7 +44,7 @@ const Content = () => {
         day: 'numeric'
       })}
     </p>
-    <div className='thumbnail-wrapper'>
+    <div className='thumbnail-wrapper br-1'>
       <img className='br-1' src={content.Image} />
     </div>
     <p className='p'><ReactMarkdown>{content.Content}</ReactMarkdown></p>

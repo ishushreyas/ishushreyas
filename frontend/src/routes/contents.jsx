@@ -27,7 +27,7 @@ export function Contents() {
           {contents.map((content) => (
             <li className='ls-0 bg-1 bs-2 br-1 bd-1 p-1 m-1' key={content.ID}>
               <Link className='td-0 c-0' to={`/contents/${content.ID}`}>
-              <div className='thumbnail-wrapper'>
+              <div className='thumbnail-wrapper br-1'>
                 <img className='br-1' src={content.Image} />
               </div>
               <div className='p-1 hv:cd-1 p'>
