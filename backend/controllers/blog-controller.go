@@ -18,7 +18,7 @@ import (
 var blogCollection *mongo.Collection = database.GetCollection(database.DB, "blog")
 
 func ListAllBlogPosts(w http.ResponseWriter, r *http.Request) {
-    cursor, err := blogCollection.Find(context.Background(), bson.D{}, options.Find().SetSort(bson.D{{"CreatedAt", -1}}))
+    cursor, err := blogCollection.Find(context.Background(), bson.D{}, options.Find().SetSort(bson.D{{"createdAt", -1}}))
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
