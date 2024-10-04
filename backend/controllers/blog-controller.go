@@ -30,6 +30,10 @@ func ListAllBlogPosts(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+	for _, blog := range blogs {
+		blog.Image, _ = generateImageUrl(blog.Image)
+	}
+
 	data := map[string]interface{} {
 		"message": "Blog Posts",
 		"data":    blogs,

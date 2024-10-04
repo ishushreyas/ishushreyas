@@ -25,13 +25,14 @@ export function Contents() {
       {contents.length ? (
         <ul className='m-0 p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {contents.map((content) => (
-            <li className='ls-0' key={content.ID}>
+            <li className='ls-0 bg-1 bs-2 br-1 bd-1 p-1 m-1' key={content.ID}>
               <Link className='td-0 c-0' to={`/contents/${content.ID}`}>
+              <img className='br-1' src={content.Image} />
               <div className='p-1 hv:cd-1 p'>
                 <p className="fw-1">{content.Title || <i>No Title</i>}</p>
                 {content.Tags && content.Tags.length > 0 && (
                   <span>{content.Tags.map((tag) => (
-                    <span className='p-2 mr-1 bs-3 glass br-1 ls-0 fw-1'>{tag}</span>
+                    <span className='p-5 ml-0 bs-3 p bg-2 br-1 ls-0 fw-1'>{tag}</span>
                   ))}</span>
                 )}
                 </div>
