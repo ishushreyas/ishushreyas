@@ -9,12 +9,13 @@
   padding: 10px 20px;
   color: #333;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
 .scrolled {
-    border-bottom:solid 1px #ddd;
-    backdrop-filter: saturate(180%) blur(20px); 
-    background: rgb(0,0,0,0.02);
+  border-bottom: solid 1px #ddd;
+  backdrop-filter: saturate(180%) blur(20px); 
+  background: rgba(0, 0, 0, 0.02);
 }
 
 /* Default navigation (hidden in mobile by default) */
@@ -30,12 +31,26 @@
   padding: 8px 12px;
   font-size: 18px;
   font-family: "Sora", sans-serif;
+  transition: all 0.3s ease;
 }
 
 .nav a:hover {
   background-color: #fff;
   color: black;
   border-radius: 4px;
+}
+
+/* Styling for the active link */
+.nav .active-link {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 4px;
+  border-bottom: solid 1px #028a58;
+}
+
+/* Hover effect for active links */
+.nav .active-link:hover {
+  background-color: #028a58;
 }
 
 /* Hide the toggle button on larger screens */
@@ -55,7 +70,6 @@
   /* Hide the navigation by default on mobile */
   .nav {
     display: block;
-    /*flex-direction: column;*/
     position: fixed;
     top: 60px;
     right: -290px;
@@ -65,14 +79,25 @@
     border-radius: 8px;
     overflow: hidden;
     transition: all ease 0.3s;
-    /*background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));*/
   }
 
   /* Show the navigation when open */
   .nav.open {
     right: 0;
-    backdrop-filter: saturate(180%) blur(20px); 
-    background: rgb(0,0,0,0.02);
+    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(0, 0, 0, 0.02);
+    z-index: 15;
+  }
+
+  /* Style nav items in mobile */
+  .nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav ul li {
+    margin: 15px 0;
   }
 }
 
@@ -114,4 +139,4 @@ nav ul li a.active {
   nav ul li {
     float: none;
   }
-}
+  }
