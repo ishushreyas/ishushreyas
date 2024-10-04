@@ -60,6 +60,18 @@
   color: #333;
 }
 
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Style the list items */
+nav ul li {
+  float: left;
+}
+
 /* Responsive: show toggle button on small screens */
 @media (max-width: 768px) {
   .toggle-button {
@@ -101,5 +113,8 @@
 
   .nav ul li {
     margin: 15px 0;
+  }
+  nav ul li {
+    float: none;
   }
     }
