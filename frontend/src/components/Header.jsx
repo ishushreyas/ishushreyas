@@ -33,14 +33,12 @@ const Header = () => {
   };
 
   return (
-    <>
     <header className={`header ${ scrollYValue > 1  ? "scrolled" : ""}`}>
       <Link className="t-7 logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</Link>
       <div className="toggle-button" onClick={toggleMenu}>
         <span className="material-symbols-rounded c-1 p-1">{isOpen ? "close" : "menu"}</span>
       </div>
-    </header>
-      <nav onClick={toggleMenu} className={`nav glass ${isOpen ? "open" : ""}`}>
+      <nav onClick={toggleMenu} className={`nav ${isOpen ? "open" : ""}`}>
         <ul>
             <li>
               <Link to="/">Home</Link>
@@ -62,7 +60,7 @@ const Header = () => {
             </li>
           </ul>
       </nav>
-    </>
+    </header>
   );
 };
 
