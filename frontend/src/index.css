@@ -36,6 +36,8 @@ pre {
   background-color: #1d1d1d;
   border-radius: 8px;
   color: #fff;
+}
+code {
   font-family: 'Courier Prime';
 }
 .h-100{
