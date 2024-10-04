@@ -45,7 +45,6 @@
   background-color: #04AA6D;
   color: white;
   border-radius: 4px;
-  border-bottom: solid 1px #028a58;
 }
 
 /* Hover effect for active links */
@@ -70,7 +69,7 @@
   /* Hide the navigation by default on mobile */
   .nav {
     display: block;
-    position: fixed;
+    position: absolute; /* Change from fixed to absolute */
     top: 60px;
     right: -290px;
     width: 270px;
@@ -79,6 +78,7 @@
     border-radius: 8px;
     overflow: hidden;
     transition: all ease 0.3s;
+    pointer-events: none; /* Disable interaction when closed */
   }
 
   /* Show the navigation when open */
@@ -87,6 +87,8 @@
     backdrop-filter: saturate(180%) blur(20px);
     background: rgba(0, 0, 0, 0.02);
     z-index: 15;
+    pointer-events: auto; /* Enable interaction when open */
+    position: fixed; /* Fix it only when opened */
   }
 
   /* Style nav items in mobile */
@@ -99,44 +101,4 @@
   .nav ul li {
     margin: 15px 0;
   }
-}
-
-/* Basic styling for the navigation bar */
-nav {
-  overflow: hidden;
-}
-
-/* Remove bullets and padding from the list */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-/* Style the list items */
-nav ul li {
-  float: right;
-}
-
-/* Style the links inside the list items */
-nav ul li a {
-  display: block;
-  color: #333;
-  text-align: right;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Style the active/current link */
-nav ul li a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-/* Responsive: stack the links vertically on smaller screens */
-@media screen and (max-width: 600px) {
-  nav ul li {
-    float: none;
-  }
-  }
+    }
