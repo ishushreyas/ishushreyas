@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className={`header ${scrollYValue > 50 ? "scrolled" : ""}`}>
+      <div className={`header ${scrollYValue > 0 ? "scrolled" : ""}`}>
       <NavLink className="t-7 logo text-grad" to="/">{isMobile ? "is" : "ishushreyas"}</NavLink>
       <div 
         className="toggle-button" 
