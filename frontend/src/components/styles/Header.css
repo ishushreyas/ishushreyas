@@ -65,12 +65,12 @@
     /*flex-direction: column;*/
     position: fixed;
     top: 60px;
-    right: 200px;
+    right: -200px;
     width: 270px;
     padding: 10px;
     border-radius: 8px;
     overflow: hidden;
-    transition: all ease o.3s;
+    transition: all ease 0.3s;
     /*background: linear-gradient(to left bottom, rgb(234, 245, 255), rgb(247, 236, 250));*/
   }
 
