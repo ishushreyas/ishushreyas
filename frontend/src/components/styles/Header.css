@@ -44,6 +44,7 @@
 .nav .active {
   color: #04AA6D;
   border-radius: 4px;
+  font-weight: 700;
 }
 
 /* Hover effect for active links */
