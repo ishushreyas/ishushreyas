@@ -30,7 +30,7 @@ const Content = () => {
 
   return (
   <div className='m-1 p-1 bg-1 bs-2 br-1'>
-    <h1 className='fw-1 t-4'>{content.Title}</h1>
+    <h1 className='sora t-4 fw-1'>{content.Title}</h1>
     {content.Tags && content.Tags.length > 0 && (
       <span>{content.Tags.map((tag, index) => (
         <span key={index} className='p-2 m-1 bs-3 p bd-1 br-1 ls-0 c-1 fw-1'>{tag}</span>
