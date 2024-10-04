@@ -93,12 +93,15 @@ nav ul li {
     pointer-events: none; /* Disable interaction when closed */
   }
 
+  .scrolled .nav {
+    backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(0, 0, 0, 0.02);
+  }
+  
   /* Show the navigation when open */
   .nav.open {
     width: 270px;
     height: 100vh;
-    backdrop-filter: saturate(180%) blur(20px);
-    background: rgba(0, 0, 0, 0.02);
     z-index: 15;
     pointer-events: auto; /* Enable interaction when open */
     position: fixed; /* Fix it only when opened */
