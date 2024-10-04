@@ -34,9 +34,9 @@ img, svg {
 pre {
   padding: 10px;
   background-color: #1d1d1d;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #fff;
-  font-family: 'Courier Prime', monospace;
+  font-family: 'Courier Prime';
 }
 .h-100{
   min-height: calc(100vh - 180px);
