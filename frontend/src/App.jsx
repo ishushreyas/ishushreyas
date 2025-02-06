@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Menu, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
   X,
-  ExternalLink,
-  ArrowRight
+  ArrowRight,
+  Heart,
+  Smile,
+  Book,
+  Tv,
+  Globe,
+  Code,
+  Cog,
+  Cpu,
+  Wallet,
+  MessageSquare,
+  Flower,
+  Send,
+  FileText,
+  Star,
+  Languages,
+  SmilePlus 
 } from 'lucide-react';
 
 const App = () => {
@@ -21,18 +36,27 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const projects = [
+  const journeys = [
     {
       title: "zerosix",
       description: "A Progressive Web App to track shared expenses with friends using React and Golang.",
       tags: ["React", "Golang", "PWA", "WebSockets"],
-      link: "https://zerosix.ishushreyas.studio/"
+      link: "https://zerosix.ishushreyas.studio/",
+      icon: <Wallet className="w-8 h-8" />
     },
     {
-      title: "AI-Powered Chatbot",
-      description: "Developed a chatbot with OpenAI's API for interactive conversations.",
-      tags: ["Golang", "React", "OpenAI", "WebSockets"],
-      link: "#"
+      title: "Chatbot",
+      description: "Developed a chatbot with Gemini's API for interactive conversations.",
+      tags: ["Golang", "React", "GeminiAPI"],
+      link: "https://github.com/ishushreyas/gemini-project",
+      icon: <MessageSquare className="w-8 h-8" />
+    },
+    {
+      title: "Bhagwad Geeta",
+      description: "Exploring spirituality through technology, merging ancient wisdom with modern tools.",
+      tags: ["Golang", "React", "Postgresql"],
+      link: "https://github.com/ishushreyas/bhagwad-geeta",
+      icon: <Flower className="w-8 h-8" />
     },
   ];
 
@@ -43,12 +67,14 @@ const App = () => {
         scrolled ? 'bg-white/80 backdrop-blur-xl shadow-sm' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-12">
-            <div className="text-lg font-medium tracking-tight">Ishu Shreyas</div>
+          <div className="flex justify-between items-center h-16">
+            <div className="text-lg font-medium tracking-tight flex items-center gap-2">
+              Ishu Shreyas <Heart size={16} className="text-red-500" />
+            </div>
             
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-black/60 hover:text-black transition-colors text-sm">About</a>
-              <a href="#projects" className="text-black/60 hover:text-black transition-colors text-sm">Projects</a>
+              <a href="#journey" className="text-black/60 hover:text-black transition-colors text-sm">My Journey</a>
               <a href="#contact" className="text-black/60 hover:text-black transition-colors text-sm">Contact</a>
             </div>
 
@@ -67,7 +93,7 @@ const App = () => {
         <div className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 md:hidden">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
             <a href="#about" className="text-2xl" onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#projects" className="text-2xl" onClick={() => setIsMenuOpen(false)}>Projects</a>
+            <a href="#journey" className="text-2xl" onClick={() => setIsMenuOpen(false)}>My Journey</a>
             <a href="#contact" className="text-2xl" onClick={() => setIsMenuOpen(false)}>Contact</a>
           </div>
         </div>
@@ -76,20 +102,24 @@ const App = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 pt-24">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
+              <span className="text-lg text-black/60 mb-4 flex items-center gap-2">
+                <Star className="w-5 h-5" /> Welcome
+              </span>
               <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-tight">
-                Full-Stack Developer.
+                "Following the path of curiosity and growth."
               </h1>
               <p className="text-xl md:text-2xl text-black/60 mb-8">
-                Creating innovative solutions at the intersection of software and hardware.
+                A tech enthusiast from Jamshedpur, crafting digital experiences with heart and soul.
               </p>
-              <a href="#projects" className="inline-flex items-center text-lg text-black hover:opacity-70 transition-opacity">
-                View Projects <ArrowRight size={20} className="ml-2" />
+              <a href="#journey" className="inline-flex items-center text-lg text-black hover:opacity-70 transition-opacity">
+                See my work <ArrowRight size={20} className="ml-2" />
               </a>
             </div>
             <div className="relative">
-              <img className="aspect-square rounded-3xl bg-gradient-to-br from-gray-900 to-gray-800 shadow-2xl" src="/ishushreyas.jpg" />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-pink-100 to-blue-100 rounded-3xl transform rotate-6"></div>
+              <img className="aspect-square rounded-3xl shadow-xl" src="/ishushreyas.jpg" alt="Ishu Shreyas" />
             </div>
           </div>
         </div>
@@ -100,34 +130,42 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-8">About Me</h2>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-8 flex items-center gap-3">
+                <Smile className="w-8 h-8" /> Nice to meet you
+              </h2>
               <p className="text-black/60 text-lg mb-8 leading-relaxed">
-                A curious mind with a passion for software development, embedded systems, and adventure. 
-                Based in Jamshedpur, India, I'm constantly exploring the intersection of hardware and software, 
-                pushing boundaries with React, Golang, and C++.
+                I'm Ishu, a curious soul from the vibrant city of Jamshedpur, India. My journey in tech is fueled by a deep passion 
+                for creating meaningful experiences through code. When I'm not coding, you'll find me lost in the pages of a good book, 
+                exploring new trails, or diving deep into the world of One Piece!
               </p>
               <div className="flex items-center space-x-4">
-                <a href="#contact" className="bg-black text-white px-6 py-3 rounded-full hover:bg-black/90 transition-colors text-sm">
-                  Get in touch
+                <a href="#contact" className="bg-black text-white px-6 py-3 rounded-full hover:bg-black/90 transition-colors text-sm inline-flex items-center gap-2">
+                  Let's Chat <Send size={16} />
                 </a>
-                <a href="/resume.pdf" className="text-black/60 hover:text-black transition-colors text-sm">
-                  Download Resume
+                <a href="/resume.pdf" className="text-black/60 hover:text-black transition-colors text-sm inline-flex items-center gap-2">
+                  View Resume <FileText size={16} />
                 </a>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-white p-6 rounded-3xl shadow-sm">
-                <h3 className="text-lg font-medium mb-4">Frontend</h3>
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <Heart className="w-5 h-5" /> What I Love
+                </h3>
                 <ul className="text-black/60 space-y-2">
-                  <li>React</li>
-                  <li>Tailwind CSS</li>
+                  <li className="flex items-center gap-2"><Book size={16} /> Reading (The Alchemist!)</li>
+                  <li className="flex items-center gap-2"><Tv size={16} /> One Piece adventures</li>
+                  <li className="flex items-center gap-2"><Languages size={16} /> Learning Nepali</li>
                 </ul>
               </div>
               <div className="bg-white p-6 rounded-3xl shadow-sm">
-                <h3 className="text-lg font-medium mb-4">Backend</h3>
+                <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
+                  <Code className="w-5 h-5" /> Tech I Use
+                </h3>
                 <ul className="text-black/60 space-y-2">
-                  <li>Golang</li>
-                  <li>PostgreSQL</li>
+                  <li className="flex items-center gap-2"><SmilePlus size={16} /> React & Tailwind</li>
+                  <li className="flex items-center gap-2"><Cog size={16} /> Golang</li>
+                  <li className="flex items-center gap-2"><Cpu size={16} /> Embedded Systems</li>
                 </ul>
               </div>
             </div>
@@ -135,22 +173,29 @@ const App = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-32">
+      {/* Journey Section */}
+      <section id="journey" className="py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-16">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-16 flex items-center gap-3">
+            <Code className="w-8 h-8" /> Things I've Built
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {journeys.map((journey, index) => (
               <a 
-                href={project.link}
+                href={journey.link}
                 key={index} 
                 className="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <div className="aspect-video bg-gray-900 rounded-2xl mb-6" />
-                <h3 className="text-xl font-medium mb-4">{project.title}</h3>
-                <p className="text-black/60 mb-6">{project.description}</p>
+                <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl mb-6 flex flex-col justify-center items-center">
+                  <div className="text-white mb-2">{journey.icon}</div>
+                  <p className="text-white text-2xl">{journey.title}</p>
+                </div>
+                <h3 className="text-xl font-medium mb-4">{journey.title}</h3>
+                <p className="text-black/60 mb-6">{journey.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
+                  {journey.tags.map((tag, tagIndex) => (
                     <span key={tagIndex} className="bg-gray-100 text-black/60 px-4 py-1 rounded-full text-sm">
                       {tag}
                     </span>
@@ -166,15 +211,17 @@ const App = () => {
       <section id="contact" className="py-32 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-8">Let's Connect</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-8">
+              <Send className="w-8 h-8" /> Let's Create Something Amazing
+            </h2>
             <p className="text-black/60 text-lg mb-12">
-              Whether you have a project in mind or just want to chat, I'd love to hear from you.
+              Whether you have an exciting project in mind or just want to say hi, I'd love to hear from you!
             </p>
             <div className="flex justify-center space-x-8">
               <a href="https://github.com/ishushreyas" className="text-black/60 hover:text-black transition-colors">
                 <Github size={24} />
               </a>
-              <a href="https://linkedin.com" className="text-black/60 hover:text-black transition-colors">
+              <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="text-black/60 hover:text-black transition-colors">
                 <Linkedin size={24} />
               </a>
               <a href="mailto:ishushreyas@gmail.com" className="text-black/60 hover:text-black transition-colors">
@@ -190,7 +237,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center">
             <p className="text-black/40 text-sm">
-              © 2025 Ishu Shreyas
+              Made with <Heart size={12} className="inline text-red-500" /> by Ishu Shreyas | 
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-black/40 hover:text-black text-sm transition-colors">Privacy</a>
