@@ -16,6 +16,6 @@ I am **Ishu Shreyas**, a passionate developer on an exciting coding journey! �
 
 ## 🌐 Connect with me
 Check out my portfolio where I showcase some of my projects and experiences:
-[**My Portfolio Website** 🌐](https://ishushreyas.vercel.app/)
+[**My Portfolio Website** 🌐](https://ishushreyas.studio/)
 
 Let’s build something awesome together! 💡
