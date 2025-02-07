@@ -136,7 +136,7 @@ const App = () => {
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                 I'm Ishu, a curious soul from the vibrant city of Jamshedpur, India. My journey in tech is fueled by a deep passion 
                 for creating meaningful experiences through code. When I'm not coding, you'll find me lost in the pages of a good book, 
-                exploring new trails, or diving deep into the world of Fiction!
+                exploring new trails, or diving deep into the world of One Piece!
               </p>
               <div className="flex items-center space-x-4">
                 <a href="#contact" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-sm inline-flex items-center gap-2">
@@ -174,32 +174,65 @@ const App = () => {
       </section>
 
       {/* Journey Section */}
-      <section id="journey" className="py-32">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="journey" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 via-pink-100/20 to-blue-100/30" />
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+
+        <div className="absolute inset-0 opacity-[0.03]"
+             style={{
+               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+             }}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 relative">
           <h2 className="text-3xl md:text-4xl font-semibold mb-16 flex items-center gap-3 text-purple-600">
             <Code className="w-8 h-8" /> Things I've Built
           </h2>
+
           <div className="grid md:grid-cols-3 gap-8">
             {journeys.map((journey, index) => (
-              <a 
+              <a
                 href={journey.link}
-                key={index} 
-                className="group bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300"
+                key={index}
+                className="group relative"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="aspect-video bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl mb-6 flex flex-col justify-center items-center">
-                  <div className="text-white mb-2">{journey.icon}</div>
-                  <p className="text-white text-2xl">{journey.title}</p>
-                </div>
-                <h3 className="text-xl font-medium mb-4 text-purple-600">{journey.title}</h3>
-                <p className="text-gray-600 mb-6">{journey.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {journey.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="bg-purple-50 text-purple-600 px-4 py-1 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-3xl
+                              shadow-[inset_0_0_0_1px_rgba(255,255,255,0.3)]
+                              group-hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]
+                              transition-all duration-300" />
+
+                <div className="relative p-8">
+                  <div className="aspect-video rounded-2xl mb-6 overflow-hidden group-hover:transform group-hover:scale-[1.02] transition-transform duration-300">
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500/90 to-pink-500/90
+                                  flex flex-col justify-center items-center p-6
+                                  relative">
+                      <div className="absolute inset-0 opacity-10 mix-blend-overlay"
+                           style={{
+                             backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
+                           }} />
+
+                      <div className="text-white mb-2 relative z-10">{journey.icon}</div>
+                      <p className="text-white text-2xl font-medium relative z-10">{journey.title}</p>
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-medium mb-4 text-purple-600/90">{journey.title}</h3>
+                  <p className="text-gray-600 mb-6">{journey.description}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {journey.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="bg-purple-100/50 text-purple-600 px-4 py-1 rounded-full text-sm
+                                 backdrop-blur-sm border border-purple-200/20
+                                 shadow-[0_2px_4px_rgba(0,0,0,0.02)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </a>
             ))}
