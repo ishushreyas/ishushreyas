@@ -1,37 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Github,
-  Linkedin,
-  Mail,
-  Menu,
-  X,
-  ArrowRight,
-  Heart,
-  Smile,
-  Book,
-  Tv,
-  Globe,
-  Code,
-  Cog,
-  Cpu,
-  Wallet,
-  MessageSquare,
-  Flower,
-  Send,
-  FileText,
-  Star,
-  Languages,
-  SmilePlus 
+  Github, Linkedin, Mail, Menu, X, ArrowRight, Heart,
+  Smile, Book, Tv, Globe, Code, Cog, Cpu, Wallet,
+  MessageSquare, Flower, Send, FileText, Star, Languages, SmilePlus
 } from 'lucide-react';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('section[id]').forEach(section => {
+        observer.observe(section);
+      });
+
+      return () => observer.disconnect();
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -61,26 +58,40 @@ const App = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/70 backdrop-blur-xl shadow-sm' : 'bg-transparent'
+      <nav className={`fixed w-full z-50 transition-all duration-200 ${
+        scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-16">
-            <div className="text-lg font-medium tracking-tight flex items-center gap-2">
-              Ishu Shreyas <Heart size={16} className="text-pink-500" />
+            <div className="text-lg font-medium tracking-tight flex items-center gap-2 group">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+                Ishu Shreyas
+              </span>
+              <Heart size={16} className="text-pink-500" />
             </div>
             
             <div className="hidden md:flex space-x-8">
-              <a href="#about" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">About</a>
-              <a href="#journey" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">My Journey</a>
-              <a href="#contact" className="text-gray-600 hover:text-purple-600 transition-colors text-sm">Contact</a>
+              {['about', 'journey', 'contact'].map((section) => (
+                <a
+                  key={section}
+                  href={`#${section}`}
+                  className={`relative text-gray-600 hover:text-purple-600 transition-colors duration-200 text-sm capitalize
+                    ${activeSection === section ? 'text-purple-600' : ''}
+                  `}
+                >
+                  {section}
+                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 transform origin-left transition-transform duration-200
+                    ${activeSection === section ? 'scale-x-100' : 'scale-x-0'}
+                  `} />
+                </a>
+              ))}
             </div>
 
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-600 hover:text-purple-600"
+              className="md:hidden text-gray-600 hover:text-purple-600 transition-transform duration-200"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -90,36 +101,75 @@ const App = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 md:hidden">
+        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 md:hidden">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#about" className="text-2xl text-purple-600" onClick={() => setIsMenuOpen(false)}>About</a>
-            <a href="#journey" className="text-2xl text-purple-600" onClick={() => setIsMenuOpen(false)}>My Journey</a>
-            <a href="#contact" className="text-2xl text-purple-600" onClick={() => setIsMenuOpen(false)}>Contact</a>
+            {['about', 'journey', 'contact'].map((section) => (
+              <a
+                key={section}
+                href={`#${section}`}
+                className="text-2xl bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {section}
+              </a>
+            ))}
           </div>
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <div className="max-w-7xl mx-auto px-6 pt-24">
+      {/* Hero Section with Enhanced Graphics */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
+          <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 pt-24 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-lg text-purple-600 mb-4 flex items-center gap-2">
+              <span className="text-lg text-purple-600 mb-4 flex items-center gap-2 animate-fade-in">
                 <Star className="w-5 h-5" /> Welcome
               </span>
-              <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight leading-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent animate-fade-in animation-delay-200">
                 "Following the path of curiosity and growth."
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 animate-fade-in animation-delay-400">
                 A tech enthusiast from Jamshedpur, crafting digital experiences with heart and soul.
               </p>
-              <a href="#journey" className="inline-flex items-center text-lg text-purple-600 hover:text-pink-600 transition-colors">
-                See my work <ArrowRight size={20} className="ml-2" />
+              <a href="#journey" className="inline-flex items-center text-lg text-purple-600 hover:text-pink-600 transition-colors duration-200 group animate-fade-in animation-delay-600">
+                See my work <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
               </a>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-pink-200 to-purple-200 rounded-3xl transform rotate-6"></div>
-              <img className="aspect-square rounded-3xl shadow-xl" src="/ishushreyas.jpg" alt="Ishu Shreyas" />
+            
+            {/* Image with decorative elements */}
+            <div className="relative animate-fade-in animation-delay-800">
+              {/* Decorative circles */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-purple-200 rounded-full animate-float" />
+              <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-pink-200 rounded-full animate-float animation-delay-2000" />
+              
+              {/* Decorative patterns */}
+              <div className="absolute -top-8 -right-8 w-16 h-16 border-4 border-purple-200 rounded-full animate-spin-slow" />
+              <div className="absolute -bottom-8 -left-8 w-20 h-20 border-4 border-pink-200 rounded-full animate-reverse-spin" />
+              
+              {/* Main image container */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-200 to-pink-200 rounded-3xl transform rotate-6 transition-transform duration-200 group-hover:rotate-12" />
+                <img 
+                  className="relative rounded-3xl shadow-xl transition-transform duration-200 hover:scale-105"
+                  src="/ishushreyas.jpg"
+                  alt="Ishu Shreyas"
+                />
+                
+                {/* Floating badges */}
+                <div className="absolute -right-4 top-1/4 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-lg animate-float">
+                  <Code className="w-6 h-6 text-purple-600" />
+                </div>
+                <div className="absolute -left-4 bottom-1/4 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-lg animate-float animation-delay-2000">
+                  <Heart className="w-6 h-6 text-pink-600" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -282,5 +332,82 @@ const App = () => {
     </div>
   );
 };
+
+// Add custom animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -20px) scale(1.1); }
+    50% { transform: translate(0, 20px) scale(1); }
+    75% { transform: translate(-20px, -20px) scale(0.9); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes reverse-spin {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+
+  .animate-reverse-spin {
+    animation: reverse-spin 12s linear infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+`;
+document.head.appendChild(style);
 
 export default App;
