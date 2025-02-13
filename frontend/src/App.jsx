@@ -323,58 +323,130 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section with New Graphics */}
+      {/* Contact Section with Form */}
       <section id="contact" className="py-32 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
           <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
           
-          {/* Floating shapes */}
+          {/* Geometric decorations */}
           <div className="absolute top-20 left-20 w-16 h-16 border-4 border-purple-200 rounded-full animate-float" />
           <div className="absolute bottom-20 right-20 w-12 h-12 border-4 border-pink-200 rotate-45 animate-float animation-delay-2000" />
+          
+          {/* Mail icon decoration */}
+          <div className="absolute top-1/3 right-10 bg-white/80 backdrop-blur-sm p-3 rounded-2xl shadow-lg animate-float">
+            <Mail className="w-6 h-6 text-purple-600" />
+          </div>
+          
+          {/* Code icon decoration */}
+          <div className="absolute bottom-1/3 left-10 bg-white/80 backdrop-blur-sm p-3 rounded-2xl shadow-lg animate-float animation-delay-2000">
+            <Code className="w-6 h-6 text-pink-600" />
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-purple-600 animate-fade-in">
-              <Send className="w-8 h-8 inline-block mb-2" /> Let's Create Something Amazing
-            </h2>
-            <p className="text-gray-600 text-lg mb-12 animate-fade-in animation-delay-200">
-              Whether you have an exciting project in mind or just want to say hi, I'd love to hear from you!
-            </p>
-            <div className="flex justify-center space-x-8 animate-fade-in animation-delay-400">
-              {[
-                { icon: <Github size={24} />, link: "https://github.com/ishushreyas" },
-                { icon: <Linkedin size={24} />, link: "https://www.linkedin.com/in/ishu-shreyas-776b61297" },
-                { icon: <Mail size={24} />, link: "mailto:ishushreyas@gmail.com" }
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.link}
-                  className="text-gray-600 hover:text-purple-600 transition-colors duration-200 transform hover:scale-110"
-                  target="_blank"
-                  rel="noopener noreferrer"
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-purple-600 animate-fade-in">
+                <Send className="w-8 h-8 inline-block mb-2" /> Let's Create Something Amazing
+              </h2>
+              <p className="text-gray-600 text-lg animate-fade-in animation-delay-200">
+                Whether you have an exciting project in mind or just want to say hi, I'd love to hear from you!
+              </p>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg relative animate-fade-in animation-delay-400">
+              {/* Decorative elements for form */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-200 rounded-full animate-ping" />
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-pink-200 rounded-full animate-ping animation-delay-200" />
+              
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-600 font-medium">Name</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-600 font-medium">Email</label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-600 font-medium">Subject</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
+                    placeholder="Project Discussion"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-600 font-medium">Message</label>
+                  <textarea
+                    rows="4"
+                    className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200 resize-none"
+                    placeholder="Tell me about your project..."
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl hover:opacity-90 transition-opacity duration-200 flex items-center justify-center gap-2 group"
                 >
-                  {social.icon}
-                </a>
-              ))}
+                  Send Message
+                  <Send size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer with Social Links */}
       <footer className="py-8 border-t border-purple-100">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              Made with <Heart size={12} className="inline text-pink-500" /> by Ishu Shreyas | 
+              Made with <Heart size={12} className="inline text-pink-500" /> by Ishu Shreyas
             </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-500 hover:text-purple-600 text-sm transition-colors">Privacy</a>
-              <a href="#" className="text-gray-500 hover:text-purple-600 text-sm transition-colors">Terms</a>
+            
+            {/* Social Links */}
+            <div className="flex items-center space-x-6">
+              <a
+                href="https://github.com/ishushreyas"
+                className="text-gray-500 hover:text-purple-600 transition-colors duration-200 transform hover:scale-110"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ishu-shreyas-776b61297"
+                className="text-gray-500 hover:text-purple-600 transition-colors duration-200 transform hover:scale-110"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href="mailto:ishushreyas@gmail.com"
+                className="text-gray-500 hover:text-purple-600 transition-colors duration-200 transform hover:scale-110"
+              >
+                <Mail size={20} />
+              </a>
             </div>
+
           </div>
         </div>
       </footer>
