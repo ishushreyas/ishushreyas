@@ -8,7 +8,7 @@ COPY react_frontend/ ./
 RUN npm run build
 
 # Stage 2: Build Backend
-FROM golang:1.23.2-alpine as go_server-builder
+FROM golang:1.24.0-alpine as go_server-builder
 WORKDIR /go_server
 COPY go_server/go.* ./
 RUN go mod download
