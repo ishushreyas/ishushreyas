@@ -8,19 +8,19 @@ COPY react_frontend/ ./
 RUN npm run build
 
 # Stage 2: Build Backend
-FROM golang:1.23.2-alpine as go_service-builder
-WORKDIR /go_service
-COPY go_service/go.* ./
+FROM golang:1.23.2-alpine as go_server-builder
+WORKDIR /go_server
+COPY go_server/go.* ./
 RUN go mod download
-COPY go_service/ ./
+COPY go_server/ ./
 RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
 # Stage 3: Final Image
 FROM nginx:alpine
 # Copy react_frontend build
 COPY --from=react_frontend-builder /react_frontend/dist /usr/share/nginx/html
-# Copy go_service binary
-COPY --from=go_service-builder /go_service/main /app/main
+# Copy go_server binary
+COPY --from=go_server-builder /go_server/main /app/main
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Install supervisor to manage multiple processes
