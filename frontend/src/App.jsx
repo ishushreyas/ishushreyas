@@ -175,47 +175,81 @@ const App = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-32 bg-gradient-to-br from-purple-50 to-pink-50">
+       {/* About Section with New Graphics */}
+      <section id="about" className="py-32 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
+          <div className="absolute bottom-20 left-10 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
+          
+          {/* Geometric shapes */}
+          <div className="absolute top-40 left-1/4 w-12 h-12 border-4 border-purple-200 rounded-xl animate-spin-slow" />
+          <div className="absolute bottom-40 right-1/4 w-16 h-16 border-4 border-pink-200 rotate-45 animate-float" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center relative">
             <div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-8 flex items-center gap-3 text-purple-600">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-8 flex items-center gap-3 text-purple-600 animate-fade-in">
                 <Smile className="w-8 h-8" /> Nice to meet you
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed animate-fade-in animation-delay-200">
                 I'm Ishu, a curious soul from the vibrant city of Jamshedpur, India. My journey in tech is fueled by a deep passion 
-                for creating meaningful experiences through code. When I'm not coding, you'll find me lost in the pages of a good book, 
-                exploring new trails, or diving deep into the world of One Piece!
+                for creating meaningful experiences through code.
               </p>
-              <div className="flex items-center space-x-4">
-                <a href="#contact" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-sm inline-flex items-center gap-2">
+              <div className="flex items-center space-x-4 animate-fade-in animation-delay-400">
+                <a href="#contact" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-sm inline-flex items-center gap-2 hover:scale-105 transform transition-transform duration-200">
                   Let's Chat <Send size={16} />
                 </a>
-                <a href="/resume.pdf" className="text-gray-600 hover:text-purple-600 transition-colors text-sm inline-flex items-center gap-2">
-                  View Resume <FileText size={16} />
+                <a href="/resume.pdf" className="text-gray-600 hover:text-purple-600 transition-colors text-sm inline-flex items-center gap-2 group">
+                  View Resume <FileText size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </a>
               </div>
             </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+
+            <div className="grid md:grid-cols-2 gap-4 relative">
+              {/* Decorative lines */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-3xl rotate-3" />
+              
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 relative">
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-purple-200 rounded-full animate-ping" />
                 <h3 className="text-lg font-medium mb-4 flex items-center gap-2 text-purple-600">
                   <Heart className="w-5 h-5" /> What I Love
                 </h3>
                 <ul className="text-gray-600 space-y-2">
-                  <li className="flex items-center gap-2"><Book size={16} /> Reading (The Alchemist!)</li>
-                  <li className="flex items-center gap-2"><Tv size={16} /> One Piece adventures</li>
-                  <li className="flex items-center gap-2"><Languages size={16} /> Learning Nepali</li>
+                  <li className="flex items-center gap-2 group">
+                    <Book size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    Reading (The Alchemist!)
+                  </li>
+                  <li className="flex items-center gap-2 group">
+                    <Tv size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    One Piece adventures
+                  </li>
+                  <li className="flex items-center gap-2 group">
+                    <Languages size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    Learning Nepali
+                  </li>
                 </ul>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 relative">
+                <div className="absolute -top-2 -left-2 w-4 h-4 bg-pink-200 rounded-full animate-ping animation-delay-200" />
                 <h3 className="text-lg font-medium mb-4 flex items-center gap-2 text-purple-600">
                   <Code className="w-5 h-5" /> Tech I Use
                 </h3>
                 <ul className="text-gray-600 space-y-2">
-                  <li className="flex items-center gap-2"><SmilePlus size={16} /> React & Tailwind</li>
-                  <li className="flex items-center gap-2"><Cog size={16} /> Golang</li>
-                  <li className="flex items-center gap-2"><Cpu size={16} /> Embedded Systems</li>
+                  <li className="flex items-center gap-2 group">
+                    <SmilePlus size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    React & Tailwind
+                  </li>
+                  <li className="flex items-center gap-2 group">
+                    <Cog size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    Golang
+                  </li>
+                  <li className="flex items-center gap-2 group">
+                    <Cpu size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    Embedded Systems
+                  </li>
                 </ul>
               </div>
             </div>
@@ -223,16 +257,16 @@ const App = () => {
         </div>
       </section>
 
-      {/* Journey Section */}
+      {/* Redesigned Journey Section */}
       <section id="journey" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 via-pink-100/20 to-blue-100/30" />
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
-
-        <div className="absolute inset-0 opacity-[0.03]"
-             style={{
-               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-             }}
+        {/* Background pattern */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 opacity-[0.03]"
+               style={{
+                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+               }}
         />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 relative">
           <h2 className="text-3xl md:text-4xl font-semibold mb-16 flex items-center gap-3 text-purple-600">
@@ -248,40 +282,39 @@ const App = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-3xl
-                              shadow-[inset_0_0_0_1px_rgba(255,255,255,0.3)]
-                              group-hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]
-                              transition-all duration-300" />
-
-                <div className="relative p-8">
-                  <div className="aspect-video rounded-2xl mb-6 overflow-hidden group-hover:transform group-hover:scale-[1.02] transition-transform duration-300">
-                    <div className="w-full h-full bg-gradient-to-br from-purple-500/90 to-pink-500/90
-                                  flex flex-col justify-center items-center p-6
-                                  relative">
-                      <div className="absolute inset-0 opacity-10 mix-blend-overlay"
-                           style={{
-                             backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
-                           }} />
-
-                      <div className="text-white mb-2 relative z-10">{journey.icon}</div>
-                      <p className="text-white text-2xl font-medium relative z-10">{journey.title}</p>
+                {/* Card background with animated gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Main content container */}
+                <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 transition-transform duration-300 group-hover:-translate-y-2">
+                  {/* Floating icon */}
+                  <div className="absolute -top-6 left-6 bg-gradient-to-r from-purple-500 to-pink-500 p-4 rounded-2xl shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                    <div className="text-white transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
+                      {journey.icon}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-medium mb-4 text-purple-600/90">{journey.title}</h3>
-                  <p className="text-gray-600 mb-6">{journey.description}</p>
+                  <div className="pt-8">
+                    <h3 className="text-xl font-medium mb-4 text-purple-600">{journey.title}</h3>
+                    <p className="text-gray-600 mb-6">{journey.description}</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {journey.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="bg-purple-100/50 text-purple-600 px-4 py-1 rounded-full text-sm
-                                 backdrop-blur-sm border border-purple-200/20
-                                 shadow-[0_2px_4px_rgba(0,0,0,0.02)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    {/* Tags with animated background */}
+                    <div className="flex flex-wrap gap-2">
+                      {journey.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-600 px-4 py-1 rounded-full text-sm
+                                   group-hover:from-purple-200 group-hover:to-pink-200 transition-colors duration-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Link indicator */}
+                    <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <ArrowRight className="text-purple-600 w-6 h-6 animate-bounce" />
+                    </div>
                   </div>
                 </div>
               </a>
@@ -290,26 +323,42 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-32 bg-gradient-to-br from-pink-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Contact Section with New Graphics */}
+      <section id="contact" className="py-32 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
+          
+          {/* Floating shapes */}
+          <div className="absolute top-20 left-20 w-16 h-16 border-4 border-purple-200 rounded-full animate-float" />
+          <div className="absolute bottom-20 right-20 w-12 h-12 border-4 border-pink-200 rotate-45 animate-float animation-delay-2000" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-purple-600">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-purple-600 animate-fade-in">
               <Send className="w-8 h-8 inline-block mb-2" /> Let's Create Something Amazing
             </h2>
-            <p className="text-gray-600 text-lg mb-12">
+            <p className="text-gray-600 text-lg mb-12 animate-fade-in animation-delay-200">
               Whether you have an exciting project in mind or just want to say hi, I'd love to hear from you!
             </p>
-            <div className="flex justify-center space-x-8">
-              <a href="https://github.com/ishushreyas" className="text-gray-600 hover:text-purple-600 transition-colors">
-                <Github size={24} />
-              </a>
-              <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="text-gray-600 hover:text-purple-600 transition-colors">
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:ishushreyas@gmail.com" className="text-gray-600 hover:text-purple-600 transition-colors">
-                <Mail size={24} />
-              </a>
+            <div className="flex justify-center space-x-8 animate-fade-in animation-delay-400">
+              {[
+                { icon: <Github size={24} />, link: "https://github.com/ishushreyas" },
+                { icon: <Linkedin size={24} />, link: "https://www.linkedin.com/in/ishu-shreyas-776b61297" },
+                { icon: <Mail size={24} />, link: "mailto:ishushreyas@gmail.com" }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.link}
+                  className="text-gray-600 hover:text-purple-600 transition-colors duration-200 transform hover:scale-110"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
