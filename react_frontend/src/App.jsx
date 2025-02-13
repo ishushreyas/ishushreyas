@@ -10,6 +10,18 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+  setFormData({ name: "", email: "", subject: "", message: "" });
+};
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -362,7 +374,7 @@ const App = () => {
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-200 rounded-full animate-ping" />
               <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-pink-200 rounded-full animate-ping animation-delay-200" />
               
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm text-gray-600 font-medium">Name</label>
@@ -370,6 +382,8 @@ const App = () => {
                       type="text"
                       className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
                       placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
@@ -378,6 +392,8 @@ const App = () => {
                       type="email"
                       className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
                       placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                   </div>
                 </div>
@@ -388,6 +404,8 @@ const App = () => {
                     type="text"
                     className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200"
                     placeholder="Project Discussion"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
                 </div>
                 
@@ -397,6 +415,8 @@ const App = () => {
                     rows="4"
                     className="w-full px-4 py-3 rounded-xl bg-white/50 border border-purple-100 focus:border-purple-300 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-200 resize-none"
                     placeholder="Tell me about your project..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   ></textarea>
                 </div>
                 
