@@ -14,7 +14,7 @@ const App = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  await fetch("/api/contact", {
+  await fetch("https://api.ishushreyas.studio/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
