@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   Github, Linkedin, Mail, Menu, X, ArrowRight, Heart,
-  Smile, Book, Tv, Globe, Code, Cog, Cpu, Wallet,
-  MessageSquare, Flower, Send, FileText, Star, Languages, SmilePlus
+  Smile, Book, Tv, Code, Cog, Cpu, Wallet,
+  MessageSquare, Flower, Send, FileText, Star, Brush, AppWindow
 } from 'lucide-react';
 
 const App = () => {
@@ -54,18 +54,18 @@ const handleSubmit = async (e) => {
       icon: <Wallet className="w-8 h-8" />
     },
     {
+      title: "Money Buisness",
+      description: "Prank application with face recognition.",
+      tags: ["Python", "React", "pythonanywhere.com"],
+      link: "https://github.com/ishushreyas/money-buisness",
+      icon: <Flower className="w-8 h-8" />
+    },
+    {
       title: "Chatbot",
       description: "Developed a chatbot with Gemini's API for interactive conversations.",
       tags: ["Golang", "React", "GeminiAPI"],
       link: "https://github.com/ishushreyas/gemini-project",
       icon: <MessageSquare className="w-8 h-8" />
-    },
-    {
-      title: "Bhagwad Geeta",
-      description: "Exploring spirituality through technology, merging ancient wisdom with modern tools.",
-      tags: ["Golang", "React", "Postgresql"],
-      link: "https://github.com/ishushreyas/bhagwad-geeta",
-      icon: <Flower className="w-8 h-8" />
     },
   ];
 
@@ -238,8 +238,8 @@ const handleSubmit = async (e) => {
                     One Piece adventures
                   </li>
                   <li className="flex items-center gap-2 group">
-                    <Languages size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
-                    Learning Nepali
+                    <Brush size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    Drawing
                   </li>
                 </ul>
               </div>
@@ -251,7 +251,7 @@ const handleSubmit = async (e) => {
                 </h3>
                 <ul className="text-gray-600 space-y-2">
                   <li className="flex items-center gap-2 group">
-                    <SmilePlus size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
+                    <AppWindow size={16} className="group-hover:scale-110 transition-transform duration-200" /> 
                     React & Tailwind
                   </li>
                   <li className="flex items-center gap-2 group">
