@@ -14,3 +14,7 @@
   font-family: 'Glacial Indifference', sans-serif;
   font-style: normal;
 }
+
+html {
+    scroll-behavior: smooth;
+}

@@ -70,70 +70,52 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
-      {/* Neumorphic Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-lg font-semibold tracking-tight flex items-center gap-3 
-              bg-gray-200 px-4 py-2 rounded-full shadow-neumorphic hover:shadow-neumorphic-hover transition-shadow">
-              <span className="text-gray-800">Ishu Shreyas</span>
-              <Heart size={16} className="text-gray-600" />
-            </div>
-
-            <div className="hidden md:flex space-x-4">
-              {['about', 'journey', 'contact'].map((section) => (
-                <a
-                  key={section}
-                  href={`#${section}`}
-                  className={`relative px-4 py-2 rounded-full transition-all duration-300 
-                    ${activeSection === section 
-                      ? 'bg-gray-800 text-white shadow-neumorphic' 
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300 shadow-neumorphic-light'}`}
-                >
-                  {section}
-                </a>
-              ))}
-            </div>
-
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden bg-gray-200 p-2 rounded-full shadow-neumorphic hover:shadow-neumorphic-hover transition-shadow"
-            >
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+      {/* Navigation */}
+        <div
+            className='fixed w-full h-32 z-50 transition-all duration-300'>
+            <div
+                className="absolute inset-0"
+                style={{
+                backdropFilter: scrolled ? 'blur(18px)' : 'none',
+                maskImage: scrolled
+                    ? 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, transparent 100%)'
+                    : 'none',
+                WebkitMaskImage: scrolled
+                    ? 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, transparent 100%)'
+                    : 'none',
+                }}
+            />
         </div>
-      </nav>
 
-      {/* Hero Section with Neumorphic Design */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24">
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-6 pb-24">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="bg-gray-200 px-4 py-2 rounded-full inline-flex items-center shadow-neumorphic-light">
+          <div className="space-y-6 mt-[55vh] md:mt-auto">
+            <div className="bg-gray-200 px-4 py-2 rounded-full inline-flex items-center">
               <Star className="w-5 h-5 mr-2 text-gray-700" />
               <span className="text-gray-800">Welcome</span>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              "Following the path of curiosity and growth."
-            </h1>
             
             <p className="text-xl text-gray-700">
               A tech enthusiast from Jamshedpur, crafting digital experiences with heart and soul.
             </p>
             
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+              Ishu Shreyas
+            </h1>
+            
             <div className="flex space-x-4">
               <a 
                 href="#journey" 
                 className="bg-gray-800 text-white px-6 py-3 rounded-full 
-                  flex items-center gap-2 shadow-neumorphic hover:shadow-neumorphic-hover transition-shadow"
+                  flex items-center gap-2 transition-shadow"
               >
                 See my work <ArrowRight size={20} />
               </a>
               <a 
                 href="/resume.pdf" 
                 className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full 
-                  flex items-center gap-2 shadow-neumorphic-light hover:shadow-neumorphic transition-shadow"
+                  flex items-center gap-2 transition-shadow"
               >
                 Resume <FileText size={20} />
               </a>
@@ -141,11 +123,11 @@ const App = () => {
           </div>
 
           <div className="relative">
-            <div className="bg-gray-200 p-4 rounded-3xl shadow-neumorphic relative overflow-hidden">
+            <div className="rounded-3xl relative overflow-hidden">
               <img
                 src="/ishushreyas.jpg"
                 alt="Ishu Shreyas"
-                className="rounded-2xl relative z-10 shadow-neumorphic-image"
+                className="rounded-2xl relative z-10"
               />
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100/50 to-gray-200/50 opacity-50 blur-2xl -z-10"></div>
             </div>
@@ -153,7 +135,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* About Section with Neumorphic Cards */}
+      {/* About Section */}
       <section id="about" className="py-24 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
@@ -167,13 +149,13 @@ const App = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-200 p-6 rounded-3xl shadow-neumorphic hover:shadow-neumorphic-hover transition-shadow">
+              <div className="bg-gray-200 p-6 rounded-3xl transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <Heart className="w-5 h-5 text-gray-700" /> What I Love
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-center gap-2">
-                    <Book size={16} /> Reading (The Alchemist!)
+                    <Book size={16} /> Reading 
                   </li>
                   <li className="flex items-center gap-2">
                     <Tv size={16} /> One Piece adventures
@@ -184,7 +166,7 @@ const App = () => {
                 </ul>
               </div>
 
-              <div className="bg-gray-200 p-6 rounded-3xl shadow-neumorphic hover:shadow-neumorphic-hover transition-shadow">
+              <div className="bg-gray-200 p-6 rounded-3xl transition-shadow">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <Code className="w-5 h-5 text-gray-700" /> Tech I Use
                 </h3>
@@ -196,7 +178,7 @@ const App = () => {
                     <Cog size={16} /> Golang
                   </li>
                   <li className="flex items-center gap-2">
-                    <Cpu size={16} /> Embedded Systems
+                    <Cpu size={16} /> Docker 
                   </li>
                 </ul>
               </div>
@@ -205,7 +187,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Journey Section with Neumorphic Project Cards */}
+      {/* Journey Section */}
       <section id="journey" className="py-24 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 flex items-center gap-3">
@@ -222,10 +204,9 @@ const App = () => {
                 className="group"
               >
                 <div className="bg-gray-200 p-6 rounded-3xl 
-                  shadow-neumorphic hover:shadow-neumorphic-hover 
                   transition-all duration-300 transform hover:-translate-y-2">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="bg-gray-300 p-3 rounded-full shadow-neumorphic-light">
+                    <div className="bg-gray-300 p-3 rounded-full">
                       {journey.icon}
                     </div>
                     <h3 className="text-xl font-semibold text-gray-800">{journey.title}</h3>
@@ -248,10 +229,10 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section with Neumorphic Form */}
+      {/* Contact Section */}
       <section id="contact" className="py-24 bg-gray-100">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="bg-gray-200 p-12 rounded-3xl shadow-neumorphic">
+          <div>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
                 <Send className="w-8 h-8 text-gray-700" /> Let's Connect
@@ -261,16 +242,16 @@ const App = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-200 p-12 rounded-3xl">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-gray-700">Name</label>
                   <input
                     type="text"
                     className="w-full px-4 py-3 bg-gray-100 rounded-xl 
-                      border-none shadow-neumorphic-inner focus:outline-none 
+                      border-none focus:outline-none 
                       focus:ring-2 focus:ring-gray-300 transition-all"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -280,9 +261,9 @@ const App = () => {
                   <input
                     type="email"
                     className="w-full px-4 py-3 bg-gray-100 rounded-xl 
-                      border-none shadow-neumorphic-inner focus:outline-none 
+                      border-none focus:outline-none 
                       focus:ring-2 focus:ring-gray-300 transition-all"
-                    placeholder="john@example.com"
+                    placeholder="someone@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
@@ -294,7 +275,7 @@ const App = () => {
                 <input
                   type="text"
                   className="w-full px-4 py-3 bg-gray-100 rounded-xl 
-                    border-none shadow-neumorphic-inner focus:outline-none 
+                    border-none focus:outline-none 
                     focus:ring-2 focus:ring-gray-300 transition-all"
                   placeholder="Project Discussion"
                   value={formData.subject}
@@ -307,7 +288,7 @@ const App = () => {
                 <textarea
                   rows="4"
                   className="w-full px-4 py-3 bg-gray-100 rounded-xl 
-                    border-none shadow-neumorphic-inner focus:outline-none 
+                    border-none focus:outline-none 
                     focus:ring-2 focus:ring-gray-300 transition-all resize-none"
                   placeholder="Tell me about your project..."
                   value={formData.message}
@@ -318,7 +299,6 @@ const App = () => {
               <button
                 type="submit"
                 className="w-full bg-gray-800 text-white py-4 rounded-xl 
-                  shadow-neumorphic hover:shadow-neumorphic-hover 
                   transition-all flex items-center justify-center gap-2"
               >
                 Send Message <Send size={16} />
@@ -331,10 +311,7 @@ const App = () => {
       {/* Footer */}
       <footer className="py-8 bg-gray-200">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-700 text-sm">
-            Made with <Heart size={12} className="inline text-gray-800" /> by Ishu Shreyas
-          </p>
-
+          <img className="w-80" src="/sign_light.png" />
           <div className="flex items-center space-x-6">
             <a href="https://github.com/ishushreyas" target="_blank" rel="noopener noreferrer" 
               className="text-gray-700 hover:text-gray-900 transition-colors">
@@ -354,38 +331,5 @@ const App = () => {
     </div>
   );
 };
-
-// Custom Tailwind CSS for Neumorphic Design
-const style = document.createElement('style');
-style.textContent = `
-  @layer utilities {
-    .shadow-neumorphic {
-      box-shadow: 
-        6px 6px 12px rgba(0, 0, 0, 0.08), 
-        -6px -6px 12px rgba(255, 255, 255, 0.8);
-    }
-    .shadow-neumorphic-hover {
-      box-shadow: 
-        8px 8px 16px rgba(0, 0, 0, 0.1), 
-        -8px -8px 16px rgba(255, 255, 255, 0.9);
-    }
-    .shadow-neumorphic-light {
-      box-shadow: 
-        3px 3px 6px rgba(0, 0, 0, 0.05), 
-        -3px -3px 6px rgba(255, 255, 255, 0.7);
-    }
-    .shadow-neumorphic-inner {
-      box-shadow: 
-        inset 3px 3px 6px rgba(0, 0, 0, 0.05), 
-        inset -3px -3px 6px rgba(255, 255, 255, 0.7);
-    }
-    .shadow-neumorphic-image {
-      box-shadow: 
-        10px 10px 20px rgba(0, 0, 0, 0.1), 
-        -10px -10px 20px rgba(255, 255, 255, 0.9);
-    }
-  }
-`;
-document.head.appendChild(style);
 
 export default App;
