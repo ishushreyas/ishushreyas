@@ -144,7 +144,7 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-white">
+      <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
@@ -157,7 +157,7 @@ const App = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-100 p-6 rounded-3xl transition-all hover:shadow-md">
+              <div className="bg-white p-6 rounded-3xl transition-all hover:shadow-md">
                 <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
                   <Heart className="w-5 h-5 text-black" /> What I Love
                 </h3>
@@ -174,7 +174,7 @@ const App = () => {
                 </ul>
               </div>
 
-              <div className="bg-gray-100 p-6 rounded-3xl transition-all hover:shadow-md">
+              <div className="bg-white p-6 rounded-3xl transition-all hover:shadow-md">
                 <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
                   <Code className="w-5 h-5 text-black" /> Tech I Use
                 </h3>
@@ -196,7 +196,7 @@ const App = () => {
       </section>
 
       {/* Journey Section */}
-      <section id="journey" className="py-24 bg-gray-50">
+      <section id="journey" className="py-24 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-black mb-12 flex items-center gap-3">
             <Code className="w-8 h-8 text-black" /> Things I've Built
@@ -239,7 +239,7 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white">
+      <section id="contact" className="py-24 bg-gray-100">
         <div className="max-w-3xl mx-auto px-6">
           <div>
             <div className="text-center mb-12">
@@ -251,13 +251,13 @@ const App = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-12 rounded-3xl shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-12 rounded-3xl shadow-sm">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-gray-600 font-medium">Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 bg-white rounded-xl 
+                    className="w-full px-4 py-3 bg-gray-50 rounded-xl 
                       border border-gray-200 focus:outline-none 
                       focus:ring-2 focus:ring-gray-200 transition-all"
                     placeholder="Your Name"
@@ -269,7 +269,7 @@ const App = () => {
                   <label className="text-gray-600 font-medium">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 bg-white rounded-xl 
+                    className="w-full px-4 py-3 bg-gray-50 rounded-xl 
                       border border-gray-200 focus:outline-none 
                       focus:ring-2 focus:ring-gray-200 transition-all"
                     placeholder="someone@example.com"
@@ -283,7 +283,7 @@ const App = () => {
                 <label className="text-gray-600 font-medium">Subject</label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 bg-white rounded-xl 
+                  className="w-full px-4 py-3 bg-gray-50 rounded-xl 
                     border border-gray-200 focus:outline-none 
                     focus:ring-2 focus:ring-gray-200 transition-all"
                   placeholder="Project Discussion"
@@ -296,7 +296,7 @@ const App = () => {
                 <label className="text-gray-600 font-medium">Message</label>
                 <textarea
                   rows="4"
-                  className="w-full px-4 py-3 bg-white rounded-xl 
+                  className="w-full px-4 py-3 bg-gray-50 rounded-xl 
                     border border-gray-200 focus:outline-none 
                     focus:ring-2 focus:ring-gray-200 transition-all resize-none"
                   placeholder="Tell me about your project..."
@@ -329,7 +329,7 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-gray-50">
+      <footer className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <img className="w-80" src="/sign_light.png" />
           <div className="flex items-center space-x-6 mt-6 md:mt-0">
