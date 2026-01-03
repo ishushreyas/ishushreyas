@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Github, Linkedin, Mail, ArrowRight, Heart,
+  Github, Linkedin, Mail, ArrowUpRight, 
   Zap, Book, Tv, Code, Cpu, Wallet,
-  MessageSquare, Flower, Send, FileText, Star, PenTool, Terminal, Activity, Radio
+  MessageSquare, Flower, Send, FileText, Sparkles, Layers,
+  Radio, PenTool
 } from 'lucide-react';
 
 const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Custom cursor blinking effect state
-  const [cursorVisible, setCursorVisible] = useState(true);
-  useEffect(() => {
-    const timer = setInterval(() => setCursorVisible(v => !v), 530);
-    return () => clearInterval(timer);
-  }, []);
 
+  // Soft submission handling
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -29,9 +22,9 @@ const App = () => {
         body: JSON.stringify(formData),
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
-      alert("SIGNAL TRANSMITTED SUCCESSFULLY"); // Replaced subtle toast with alert for retro feel
+      alert("Message sent gently."); 
     } catch (error) {
-      console.error("Transmission Error:", error);
+      console.error("Error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -39,203 +32,115 @@ const App = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      document.querySelectorAll('section[id]').forEach(section => {
-        observer.observe(section);
-      });
-
-      return () => observer.disconnect();
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const journeys = [
     {
-      title: "PROJ: zerosix",
-      id: "P-01",
-      description: "Progressive Web App expense tracker. Implemented concurrent cost logic.",
-      tags: ["React", "Golang", "WebSocket", "PWA"],
+      title: "zerosix",
+      category: "Fintech / PWA",
+      description: "A concurrent expense tracker built for shared living costs.",
+      tags: ["Go", "React", "Socket"],
       link: "https://zerosix.ishushreyas.studio/",
-      icon: <Wallet className="w-6 h-6" />
+      icon: <Wallet className="w-5 h-5 text-zinc-600" />
     },
     {
-      title: "PROJ: Money Biz",
-      id: "P-02",
-      description: "Facial recognition interface for prank application logic.",
-      tags: ["Python", "CV", "React"],
+      title: "Money Biz",
+      category: "Computer Vision",
+      description: "Face recognition interface for playful interactions.",
+      tags: ["Python", "CV", "Web"],
       link: "https://github.com/ishushreyas/money-buisness",
-      icon: <Flower className="w-6 h-6" />
+      icon: <Flower className="w-5 h-5 text-zinc-600" />
     },
     {
-      title: "PROJ: Chat_Bot",
-      id: "P-03",
-      description: "Conversational agent utilizing Gemini API neural pathways.",
-      tags: ["Golang", "LLM", "API"],
+      title: "Gemini Bot",
+      category: "AI / LLM",
+      description: "Interactive conversational agent using neural pathways.",
+      tags: ["Go", "LLM", "API"],
       link: "https://github.com/ishushreyas/gemini-project",
-      icon: <MessageSquare className="w-6 h-6" />
+      icon: <MessageSquare className="w-5 h-5 text-zinc-600" />
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#050a05] text-[#33ff33] font-mono selection:bg-[#33ff33] selection:text-black">
+    <div className="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-zinc-200">
       
-      {/* BACKGROUND GRID (Oscilloscope Effect) */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20" 
-           style={{
-             backgroundImage: `
-               linear-gradient(to right, #1a4d1a 1px, transparent 1px),
-               linear-gradient(to bottom, #1a4d1a 1px, transparent 1px)
-             `,
-             backgroundSize: '40px 40px'
-           }}>
+      {/* Soft Background Gradients */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/50 rounded-full blur-3xl opacity-60"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-100/50 rounded-full blur-3xl opacity-60"></div>
       </div>
 
-      {/* Navigation - Top Status Bar */}
-      <div className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-[#050a05]/95 border-[#33ff33]' : 'bg-transparent border-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      {/* Floating Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out 
+        ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-zinc-100 py-4' : 'bg-transparent py-6'}`}>
+        <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Activity className="w-5 h-5 animate-pulse" />
-            <span className="text-lg tracking-widest font-bold">SYS.ISHU_SHREYAS</span>
+            <div className="w-2 h-2 rounded-full bg-zinc-900"></div>
+            <span className="font-medium tracking-tight text-zinc-800">ishu.shreyas</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm">
-            {['ABOUT', 'JOURNEY', 'CONTACT'].map((item) => (
-              <a 
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="hover:bg-[#33ff33] hover:text-black px-2 py-1 transition-colors border border-transparent hover:border-[#33ff33]"
-              >
-                [{item}]
-              </a>
-            ))}
+          
+          <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
+            <a href="#about" className="hover:text-zinc-900 transition-colors">About</a>
+            <a href="#work" className="hover:text-zinc-900 transition-colors">Work</a>
+            <a href="#contact" className="hover:text-zinc-900 transition-colors">Contact</a>
           </div>
         </div>
-      </div>
+      </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 border-b border-[#33ff33]/30">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="space-y-8">
-            <div className="inline-block border border-[#33ff33] px-4 py-1 text-xs tracking-widest uppercase bg-[#33ff33]/10">
-              <span className="animate-pulse">●</span> System Online
-            </div>
-            
-            <div className="space-y-2">
-              <p className="text-sm text-[#33ff33]/70 uppercase tracking-widest">
-                // Diploma: Electrical Engineering
-              </p>
-              <h1 className="text-5xl md:text-7xl font-bold leading-none tracking-tighter">
-                ISHU<br/>SHREYAS
+      <section className="relative pt-40 pb-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Available for projects
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-semibold text-zinc-900 tracking-tight leading-[1.1]">
+                Electrical<br />
+                <span className="text-zinc-400">Engineering.</span>
               </h1>
-              <p className="text-xl text-[#33ff33] border-l-4 border-[#33ff33] pl-4 py-2 mt-4 bg-[#33ff33]/5">
-                Bridging Hardware Logic &<br/>Software Architecture.
+              
+              <p className="text-lg text-zinc-600 leading-relaxed max-w-md">
+                I bridge the gap between voltage and visuals. A diploma student crafting software with an engineering mindset.
               </p>
-            </div>
-            
-            <div className="flex flex-wrap gap-4">
-              <a 
-                href="#journey" 
-                className="group relative px-6 py-3 bg-[#33ff33] text-black font-bold 
-                  hover:bg-[#2bd92b] transition-all flex items-center gap-2 clip-path-polygon"
-                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)' }}
-              >
-                INITIATE_VIEW <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </a>
-              <a 
-                href="/resume.pdf" 
-                className="px-6 py-3 border border-[#33ff33] text-[#33ff33] 
-                  hover:bg-[#33ff33]/10 transition-all flex items-center gap-2"
-              >
-                DOWNLOAD_DATA <FileText size={20} />
-              </a>
-            </div>
-          </div>
 
-          <div className="relative">
-            {/* Image Frame - Schematic Style */}
-            <div className="relative border-2 border-[#33ff33] p-2">
-                <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-[#33ff33]"></div>
-                <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-[#33ff33]"></div>
-                
-                <img
-                  src="/ishushreyas.jpg"
-                  alt="Ishu Shreyas"
-                  className="w-full h-auto grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-500"
-                  style={{ filter: 'grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%) contrast(0.8)' }}
-                />
-                
-                {/* Technical Overlay */}
-                <div className="absolute bottom-4 right-4 text-xs bg-black/80 px-2 py-1 border border-[#33ff33]">
-                  FIG 1.1: CREATOR
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 border-b border-[#33ff33]/30 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold flex items-center gap-3 uppercase tracking-wider">
-                <Radio className="w-8 h-8 animate-pulse" /> 
-                <span className="border-b-4 border-[#33ff33]">Signal Input</span>
-              </h2>
-              <p className="text-lg text-[#33ff33]/80 leading-relaxed">
-                > Origin: Jamshedpur, India<br/>
-                > Status: Active Learner<br/><br/>
-                My kernel is compiled with Electrical Engineering fundamentals, running on a Full-Stack loop. I translate voltage into visuals and logic into life.
-              </p>
-            </div>
-
-            <div className="grid gap-6">
-              {/* Box 1 */}
-              <div className="border border-[#33ff33] p-6 bg-[#33ff33]/5 relative">
-                <div className="absolute top-0 left-0 bg-[#33ff33] text-black text-xs px-2 py-1 font-bold">
-                  MODULE: INTERESTS
-                </div>
-                <ul className="mt-6 space-y-3">
-                  <li className="flex items-center gap-3">
-                    <Book size={16} /> [READING_DATA]
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Tv size={16} /> [OP_ADVENTURE_LOGS]
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <PenTool size={16} /> [SCHEMATIC_DRAWING]
-                  </li>
-                </ul>
+              <div className="flex gap-4 pt-4">
+                <a href="#work" className="bg-zinc-900 text-white px-8 py-4 rounded-full font-medium hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 hover:shadow-xl hover:-translate-y-1">
+                  View Work
+                </a>
+                <a href="/resume.pdf" className="bg-white text-zinc-900 border border-zinc-200 px-8 py-4 rounded-full font-medium hover:bg-zinc-50 transition-all flex items-center gap-2">
+                  Resume <ArrowUpRight size={18} />
+                </a>
               </div>
+            </div>
 
-              {/* Box 2 */}
-              <div className="border border-[#33ff33] p-6 bg-[#33ff33]/5 relative">
-                <div className="absolute top-0 left-0 bg-[#33ff33] text-black text-xs px-2 py-1 font-bold">
-                  MODULE: TECH_STACK
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-100 relative">
+                 <img 
+                   src="/ishushreyas.jpg" 
+                   alt="Ishu Shreyas" 
+                   className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700 ease-out"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/10 to-transparent"></div>
+              </div>
+              
+              {/* Minimal Float Card */}
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl shadow-zinc-200/50 border border-zinc-100 flex items-center gap-4 animate-bounce-slow">
+                <div className="bg-zinc-100 p-3 rounded-xl">
+                  <Zap size={20} className="text-zinc-700" />
                 </div>
-                <div className="mt-6 grid grid-cols-2 gap-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Terminal size={16} /> REACT.JS
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Cpu size={16} /> GOLANG
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Zap size={16} /> DOCKER
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Activity size={16} /> TAILWIND
-                  </div>
+                <div>
+                  <p className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">Focus</p>
+                  <p className="text-sm font-medium text-zinc-800">Hardware & React</p>
                 </div>
               </div>
             </div>
@@ -243,52 +148,110 @@ const App = () => {
         </div>
       </section>
 
-      {/* Journey Section */}
-      <section id="journey" className="py-24 border-b border-[#33ff33]/30 bg-[#081208]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 flex items-center gap-3 uppercase tracking-wider">
-            <Cpu className="w-8 h-8" /> 
-            <span className="border-b-4 border-[#33ff33]">Output Log</span>
-          </h2>
+      {/* About Section - Minimal Cards */}
+      <section id="about" className="py-32 bg-white relative">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="mb-16">
+            <h2 className="text-3xl font-semibold text-zinc-900 mb-4">About Me</h2>
+            <div className="h-1 w-20 bg-zinc-100 rounded-full overflow-hidden">
+              <div className="h-full w-1/2 bg-zinc-900 rounded-full"></div>
+            </div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {journeys.map((journey, index) => (
-              <a
-                href={journey.link}
-                key={index}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block relative"
-              >
-                <div className="h-full border border-[#33ff33] bg-black p-6 hover:bg-[#33ff33]/10 transition-all duration-200">
-                  {/* Decorative Screw Heads */}
-                  <div className="absolute top-2 left-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
-                  <div className="absolute top-2 right-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
-                  <div className="absolute bottom-2 left-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
-                  <div className="absolute bottom-2 right-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
+            <div className="md:col-span-2 space-y-8">
+              <p className="text-xl text-zinc-600 leading-relaxed font-light">
+                Hello. I'm <span className="text-zinc-900 font-medium">Ishu</span>. Based in Jamshedpur, I study Electrical Engineering while exploring the infinite canvas of full-stack development. I like things that are precise, functional, and beautiful.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-6 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-zinc-200 transition-colors">
+                  <Book className="mb-4 text-zinc-400" size={24} />
+                  <h3 className="font-medium text-zinc-900">Research</h3>
+                  <p className="text-sm text-zinc-500 mt-1">Constant learning</p>
+                </div>
+                <div className="p-6 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-zinc-200 transition-colors">
+                  <Tv className="mb-4 text-zinc-400" size={24} />
+                  <h3 className="font-medium text-zinc-900">Anime</h3>
+                  <p className="text-sm text-zinc-500 mt-1">One Piece fan</p>
+                </div>
+              </div>
+            </div>
 
-                  <div className="flex justify-between items-start mb-4 border-b border-[#33ff33]/30 pb-2">
-                     <span className="text-xs bg-[#33ff33] text-black px-1 font-bold">{journey.id}</span>
-                     {journey.icon}
+            <div className="bg-zinc-900 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl shadow-zinc-200">
+              <div>
+                <Sparkles className="mb-6 text-zinc-400" />
+                <h3 className="text-2xl font-medium mb-2">Tech Stack</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  Tools I use to build digital products.
+                </p>
+              </div>
+              <ul className="space-y-3 mt-8">
+                <li className="flex items-center justify-between border-b border-zinc-800 pb-2">
+                  <span className="text-zinc-300">React</span>
+                  <Radio size={16} />
+                </li>
+                <li className="flex items-center justify-between border-b border-zinc-800 pb-2">
+                  <span className="text-zinc-300">Go (Golang)</span>
+                  <Cpu size={16} />
+                </li>
+                <li className="flex items-center justify-between border-b border-zinc-800 pb-2">
+                  <span className="text-zinc-300">Docker</span>
+                  <Layers size={16} />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Works Section */}
+      <section id="work" className="py-32 px-6 bg-zinc-50/50">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <h2 className="text-3xl font-semibold text-zinc-900 mb-2">Selected Work</h2>
+              <p className="text-zinc-500">A curation of my recent engineering.</p>
+            </div>
+            <a href="https://github.com/ishushreyas" className="hidden md:flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all">
+              View Github <ArrowUpRight size={16} />
+            </a>
+          </div>
+
+          <div className="grid gap-6">
+            {journeys.map((journey, index) => (
+              <a 
+                key={index}
+                href={journey.link}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group bg-white p-8 rounded-3xl border border-zinc-100 
+                hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-100/50 
+                transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6"
+              >
+                <div className="flex items-start gap-6">
+                  <div className="p-4 bg-zinc-50 rounded-2xl group-hover:bg-zinc-100 transition-colors">
+                    {journey.icon}
                   </div>
-                  
-                  <h3 className="text-xl font-bold mb-2 group-hover:underline decoration-2 underline-offset-4">
-                    {journey.title}
-                  </h3>
-                  <p className="text-sm text-[#33ff33]/70 mb-6 font-light">
-                    {journey.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {journey.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="text-xs border border-[#33ff33]/50 px-2 py-1 text-[#33ff33]/80 uppercase"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div>
+                    <h3 className="text-xl font-medium text-zinc-900 mb-1 flex items-center gap-2">
+                      {journey.title}
+                      <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-0 group-hover:translate-x-1 transition-all text-zinc-400" />
+                    </h3>
+                    <p className="text-zinc-500 font-light mb-3">{journey.description}</p>
+                    <div className="flex gap-2">
+                      {journey.tags.map(tag => (
+                        <span key={tag} className="text-xs font-medium text-zinc-400 bg-zinc-50 px-2 py-1 rounded-md border border-zinc-100">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                </div>
+                <div className="hidden md:block">
+                  <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider border border-zinc-100 px-3 py-1 rounded-full">
+                    {journey.category}
+                  </span>
                 </div>
               </a>
             ))}
@@ -296,106 +259,60 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24">
-        <div className="max-w-2xl mx-auto px-6">
-          <div className="border-2 border-[#33ff33] p-1 bg-[#050a05]">
-            <div className="bg-[#33ff33]/10 p-8 md:p-12 border border-[#33ff33]/30">
-              
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold mb-2 uppercase flex items-center justify-center gap-2">
-                  <Send className="w-6 h-6" /> Transmission
-                </h2>
-                <div className="h-1 w-20 bg-[#33ff33] mx-auto"></div>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label className="text-xs uppercase tracking-wider font-bold">Input: Name</label>
-                    <input
-                      type="text"
-                      className="w-full bg-black border border-[#33ff33] px-4 py-3 
-                        text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33] 
-                        placeholder-[#33ff33]/30"
-                      placeholder="USER_ID"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs uppercase tracking-wider font-bold">Input: Email</label>
-                    <input
-                      type="email"
-                      className="w-full bg-black border border-[#33ff33] px-4 py-3 
-                        text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
-                        placeholder-[#33ff33]/30"
-                      placeholder="LOCATOR@"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-xs uppercase tracking-wider font-bold">Param: Subject</label>
-                  <input
-                    type="text"
-                    className="w-full bg-black border border-[#33ff33] px-4 py-3 
-                      text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
-                      placeholder-[#33ff33]/30"
-                    placeholder="TOPIC_HEADER"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-xs uppercase tracking-wider font-bold">Data Payload</label>
-                  <textarea
-                    rows="4"
-                    className="w-full bg-black border border-[#33ff33] px-4 py-3 
-                      text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
-                      placeholder-[#33ff33]/30 resize-none"
-                    placeholder="ENTER MESSAGE STREAM..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#33ff33] text-black font-bold py-4 
-                    uppercase tracking-widest hover:bg-[#2bd92b] transition-all 
-                    border-2 border-transparent hover:border-black flex items-center justify-center gap-2"
-                >
-                  {isSubmitting ? 'TRANSMITTING...' : 'EXECUTE_SEND'}
-                  <span className={`${cursorVisible ? 'opacity-100' : 'opacity-0'}`}>_</span>
-                </button>
-              </form>
-            </div>
+      {/* Minimal Contact */}
+      <section id="contact" className="py-32 px-6 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block p-3 bg-zinc-50 rounded-2xl mb-6">
+            <Mail className="text-zinc-400" size={24} />
           </div>
+          <h2 className="text-4xl font-semibold text-zinc-900 mb-6">Let's start a conversation.</h2>
+          <p className="text-zinc-500 mb-12">I'm currently open to new opportunities and collaborations.</p>
+          
+          <form onSubmit={handleSubmit} className="text-left space-y-4 max-w-lg mx-auto">
+            <div className="grid md:grid-cols-2 gap-4">
+              <input 
+                type="text" 
+                placeholder="Name" 
+                className="w-full bg-zinc-50 border border-zinc-100 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zinc-200 transition-all placeholder:text-zinc-400"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+              <input 
+                type="email" 
+                placeholder="Email" 
+                className="w-full bg-zinc-50 border border-zinc-100 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zinc-200 transition-all placeholder:text-zinc-400"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+            <textarea 
+              rows="4" 
+              placeholder="How can I help you?" 
+              className="w-full bg-zinc-50 border border-zinc-100 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-zinc-200 transition-all placeholder:text-zinc-400 resize-none"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            ></textarea>
+            
+            <button 
+              disabled={isSubmitting}
+              className="w-full bg-zinc-900 text-white py-4 rounded-xl font-medium hover:bg-zinc-800 transition-all disabled:opacity-50"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-[#33ff33]/30 bg-[#020402]">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <div className="flex items-center gap-2 mb-4 md:mb-0">
-             <div className="w-2 h-2 bg-[#33ff33] rounded-full animate-ping"></div>
-             <span>SYSTEM STATUS: OPERATIONAL</span>
-          </div>
-          
-          <div className="flex items-center space-x-8">
-            <a href="https://github.com/ishushreyas" className="hover:text-white transition-colors flex items-center gap-2">
-              <Github size={16} /> GITHUB
+      <footer className="py-12 border-t border-zinc-100">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-zinc-400 text-sm">© 2024 Ishu Shreyas. Crafted with precision.</p>
+          <div className="flex gap-6">
+            <a href="https://github.com/ishushreyas" className="text-zinc-400 hover:text-zinc-900 transition-colors">
+              <Github size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="hover:text-white transition-colors flex items-center gap-2">
-              <Linkedin size={16} /> LINKEDIN
-            </a>
-            <a href="mailto:ishushreyas@gmail.com" className="hover:text-white transition-colors flex items-center gap-2">
-              <Mail size={16} /> EMAIL
+            <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="text-zinc-400 hover:text-zinc-900 transition-colors">
+              <Linkedin size={20} />
             </a>
           </div>
         </div>
@@ -405,3 +322,4 @@ const App = () => {
 };
 
 export default App;
+                  
