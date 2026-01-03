@@ -7,7 +7,7 @@ import {
 
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const App = () => {
     setTimeout(() => {
       alert("Message sent!");
       setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     }, 1000);
   };
 
@@ -35,7 +35,8 @@ const App = () => {
       board: "Jharkhand University Of Technology",
       year: "Pursuing",
       score: "Active",
-      color: "bg-emerald-100 text-emerald-700"
+      color: "text-blue-600",
+      bg: "bg-blue-50"
     },
     {
       level: "Intermediate (12th)",
@@ -43,7 +44,8 @@ const App = () => {
       board: "CBSE",
       year: "2023",
       score: "72.2%",
-      color: "bg-blue-100 text-blue-700"
+      color: "text-emerald-600",
+      bg: "bg-emerald-50"
     },
     {
       level: "Matriculation (10th)",
@@ -51,234 +53,287 @@ const App = () => {
       board: "CBSE",
       year: "2021",
       score: "94.4%",
-      color: "bg-zinc-100 text-zinc-700"
+      color: "text-purple-600",
+      bg: "bg-purple-50"
     },
   ];
 
-  const strengths = [
-    "Quick Learner",
-    "Hardworking",
-    "Problem Solving",
-    "Team Collaboration",
-    "Adaptability"
-  ];
+  const internship = {
+    title: "Industrial Training",
+    place: "Indo Danish Tool Room, Jamshedpur",
+    duration: "May - July 2025",
+    skills: ["PLC Programming", "Machine Maintenance", "Sensor Technology", "AI Basics"]
+  };
 
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-900 font-sans selection:bg-zinc-200 overflow-x-hidden">
       
       {/* GRAPHIC: Technical Dot Grid Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.4]"
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40"
         style={{
-          backgroundImage: 'radial-gradient(#a1a1aa 1px, transparent 1px)',
-          backgroundSize: '32px 32px'
-        }}
-      ></div>
+          backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}>
+      </div>
 
-      {/* GRAPHIC: Soft Blobs */}
-      <div className="fixed top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 -z-10"></div>
-      <div className="fixed bottom-0 left-0 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 -z-10"></div>
+      {/* GRAPHIC: Soft Ambient Glows */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-blue-100 rounded-full blur-[100px] opacity-50"></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vw] bg-emerald-100 rounded-full blur-[100px] opacity-50"></div>
+      </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b 
-        ${scrolled ? 'bg-white/90 backdrop-blur-md border-zinc-200 py-4' : 'bg-transparent border-transparent py-6'}`}>
-        <div className="max-w-4xl mx-auto px-6 flex justify-between items-center">
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out 
+        ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-zinc-200/50 py-4' : 'bg-transparent py-6'}`}>
+        <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-             <div className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center text-white font-bold text-xs">IS</div>
-             <span className="font-semibold text-zinc-800 tracking-tight">Ishu Shreyas</span>
+            <div className="w-8 h-8 bg-zinc-900 text-white rounded-lg flex items-center justify-center font-bold text-sm shadow-lg shadow-zinc-200">
+              IS
+            </div>
+            <span className="font-semibold tracking-tight text-zinc-800">ishu.shreyas</span>
           </div>
-          <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-500">
-            <a href="#about" className="hover:text-zinc-900 transition-colors">About</a>
-            <a href="#education" className="hover:text-zinc-900 transition-colors">Education</a>
-            <a href="#contact" className="hover:text-zinc-900 transition-colors">Contact</a>
+          <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
+            {['Profile', 'Education', 'Training', 'Contact'].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-zinc-900 transition-colors relative group">
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-zinc-900 transition-all group-hover:w-full"></span>
+              </a>
+            ))}
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="about" className="pt-40 pb-20 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white/60 backdrop-blur-sm border border-white/50 p-1 rounded-[2.5rem] shadow-xl shadow-zinc-200/50 inline-block w-full">
-            <div className="bg-white rounded-[2rem] p-8 md:p-12 border border-zinc-100 relative overflow-hidden">
-              
-              {/* Abstract Graphic Lines */}
-              <div className="absolute top-0 right-0 w-64 h-64 border-[30px] border-zinc-50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-              
-              <div className="relative z-10 grid md:grid-cols-3 gap-10 items-center">
-                <div className="md:col-span-2 space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 text-xs font-semibold text-zinc-600 uppercase tracking-wide">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Available for work
-                  </div>
-                  
-                  <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight">
-                    Engineering student<br/>
-                    <span className="text-zinc-400 font-light">& Tech Enthusiast</span>
-                  </h1>
-                  
-                  <p className="text-zinc-600 leading-relaxed">
-                    I am seeking a role in a supportive environment to expand my skills in advanced technologies. I combine an 
-                    <strong className="text-zinc-900 font-medium"> Electrical Engineering</strong> background with a passion for 
-                    <strong className="text-zinc-900 font-medium"> Software Development</strong>.
-                  </p>
+      <section id="profile" className="pt-40 pb-20 px-6 relative z-10">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8 animate-fade-in-up order-2 md:order-1">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-600 shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Open to Opportunities
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-[1.1]">
+              Engineering <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-500 to-zinc-800">
+                Creativity.
+              </span>
+            </h1>
+            
+            <p className="text-lg text-zinc-600 leading-relaxed font-light max-w-md">
+              A diploma student blending <strong>Electrical Engineering</strong> precision with modern software development.
+            </p>
 
-                  <div className="flex flex-wrap gap-4 pt-2">
-                    <div className="flex items-center gap-2 text-sm text-zinc-500 bg-zinc-50 px-3 py-2 rounded-lg border border-zinc-100">
-                       <MapPin size={16} /> Jharkhand, India
-                    </div>
-                    <a href="mailto:ishushreyas@gmail.com" className="flex items-center gap-2 text-sm text-zinc-900 bg-zinc-50 hover:bg-zinc-100 px-3 py-2 rounded-lg border border-zinc-200 transition-colors">
-                       <Mail size={16} /> ishushreyas@gmail.com
-                    </a>
-                  </div>
-                </div>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a href="#contact" className="group bg-zinc-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                Get in touch <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+              <div className="flex items-center gap-2 px-6 py-3 bg-white/50 border border-zinc-200 rounded-xl text-zinc-600 backdrop-blur-sm">
+                <MapPin size={18} /> Jamshedpur, IN
+              </div>
+            </div>
+          </div>
 
-                {/* Profile Image with Graphic Frame */}
-                <div className="relative mx-auto md:mx-0">
-                  <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10">
-                     <img src="/ishushreyas.jpg" alt="Profile" className="w-full h-full object-cover" />
-                  </div>
-                  {/* Decorative Circles behind image */}
-                  <div className="absolute inset-0 border border-zinc-200 rounded-full scale-110 -z-0 dashed-border"></div>
-                  <div className="absolute inset-0 border border-zinc-100 rounded-full scale-125 -z-0"></div>
-                </div>
+          <div className="relative order-1 md:order-2 flex justify-center">
+            {/* GRAPHIC: Abstract Rotating Rings */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-zinc-200 rounded-full animate-[spin_10s_linear_infinite]"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-dashed border-zinc-200 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+            
+            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-zinc-200">
+               <img 
+                 src="/ishushreyas.jpg" 
+                 alt="Ishu Shreyas" 
+                 className="w-full h-full object-cover"
+               />
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -bottom-4 bg-white/90 backdrop-blur px-6 py-3 rounded-2xl shadow-xl border border-white flex items-center gap-3">
+              <div className="p-2 bg-zinc-100 rounded-lg">
+                <PenTool size={20} className="text-zinc-700" />
+              </div>
+              <div className="text-left">
+                <p className="text-xs font-bold text-zinc-400 uppercase">Focus</p>
+                <p className="text-sm font-semibold text-zinc-800">Design & Code</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Education & Career Grid */}
-      <section id="education" className="py-20 px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      {/* Education Section - Timeline Graphic */}
+      <section id="education" className="py-24 relative z-10">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center gap-4 mb-16">
+            <div className="p-3 bg-white border border-zinc-200 rounded-xl shadow-sm">
+              <BookOpen size={24} className="text-zinc-700" />
+            </div>
+            <h2 className="text-3xl font-bold text-zinc-900">Academic Timeline</h2>
+          </div>
+
+          <div className="relative border-l-2 border-zinc-200 ml-3 md:ml-6 space-y-12">
+            {education.map((edu, idx) => (
+              <div key={idx} className="relative pl-8 md:pl-12">
+                {/* Timeline Dot */}
+                <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-4 border-white ${edu.bg.replace('50', '500')}`}></div>
+                
+                <div className="group bg-white p-6 rounded-2xl border border-zinc-100 hover:border-zinc-300 hover:shadow-lg transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${edu.color} mb-2 block`}>
+                        {edu.year}
+                      </span>
+                      <h3 className="text-xl font-bold text-zinc-900">{edu.level}</h3>
+                      <p className="text-zinc-500 font-medium">{edu.institution}</p>
+                      <p className="text-sm text-zinc-400 mt-1">{edu.board}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                       <span className={`px-4 py-2 rounded-lg font-bold text-sm ${edu.bg} ${edu.color}`}>
+                         {edu.score}
+                       </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Training & Skills - Grid Graphics */}
+      <section id="training" className="py-24 relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-12 gap-6">
             
-            {/* Left Column: Education (8 cols) */}
-            <div className="md:col-span-8 space-y-6">
-              <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2 mb-6">
-                <BookOpen className="text-zinc-400" size={20} /> Academic History
-              </h2>
-              
-              <div className="space-y-4">
-                {education.map((item, idx) => (
-                  <div key={idx} className="group bg-white p-6 rounded-2xl border border-zinc-200/60 hover:border-zinc-300 transition-all hover:shadow-lg hover:shadow-zinc-100/50 flex flex-col sm:flex-row justify-between gap-4">
-                    <div>
-                      <h3 className="font-semibold text-zinc-900">{item.level}</h3>
-                      <p className="text-sm text-zinc-500">{item.institution}</p>
-                      <p className="text-xs text-zinc-400 mt-1">{item.board}</p>
-                    </div>
-                    <div className="text-right flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2">
-                       <span className={`text-xs font-bold px-2 py-1 rounded-md ${item.color}`}>
-                         {item.year}
-                       </span>
-                       <span className="text-sm font-medium text-zinc-900">
-                         {item.score}
-                       </span>
-                    </div>
-                  </div>
-                ))}
+            {/* Internship Card */}
+            <div className="md:col-span-7 bg-zinc-900 text-white p-8 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+              {/* Graphic: Circuit Pattern */}
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Zap size={120} />
               </div>
 
-              {/* Internship Card - Styled differently to stand out */}
-              <div className="mt-8 pt-8 border-t border-zinc-200">
-                 <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2 mb-6">
-                    <Briefcase className="text-zinc-400" size={20} /> Professional Training
-                 </h2>
-                 <div className="bg-gradient-to-br from-zinc-900 to-zinc-800 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
-                    {/* Graphic overlay */}
-                    <div className="absolute top-0 right-0 p-12 bg-white/5 rounded-full blur-2xl"></div>
-                    
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-lg font-bold">Industrial Training</h3>
-                        <span className="text-xs bg-white/20 px-2 py-1 rounded">May - July 2025</span>
-                      </div>
-                      <p className="text-zinc-300 text-sm mb-6">Indo Danish Tool Room, Jamshedpur</p>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {["PLC Programming", "Machine Maintenance", "Sensor Tech", "AI"].map((skill) => (
-                          <span key={skill} className="text-xs font-medium bg-black/30 border border-white/10 px-3 py-1 rounded-full">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                   <div className="flex items-center gap-3 mb-6">
+                    <div className="p-2 bg-zinc-800 rounded-lg">
+                      <Briefcase size={20} className="text-white" />
                     </div>
-                 </div>
+                    <span className="text-zinc-400 font-medium">Internship</span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">{internship.place}</h3>
+                  <p className="text-zinc-400 mb-8">{internship.duration}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {internship.skills.map((skill, i) => (
+                    <span key={i} className="px-3 py-1.5 bg-zinc-800 rounded-md text-sm font-medium border border-zinc-700 text-zinc-300">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Strengths & Hobbies (4 cols) */}
-            <div className="md:col-span-4 space-y-6">
-              
-              {/* Strengths */}
-              <div className="bg-white p-6 rounded-3xl border border-zinc-200/60 h-full">
-                <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-6 flex items-center gap-2">
-                  <Award size={16} /> Strengths
-                </h2>
-                <ul className="space-y-4">
-                  {strengths.map((str, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm font-medium text-zinc-700">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                      {str}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Strengths Card */}
+            <div className="md:col-span-5 bg-white p-8 rounded-[2rem] border border-zinc-200 shadow-xl relative overflow-hidden">
+               {/* Graphic: Abstract shapes */}
+               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-zinc-50 rounded-full z-0"></div>
+               
+               <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="p-2 bg-zinc-100 rounded-lg">
+                      <Award size={20} className="text-zinc-900" />
+                    </div>
+                    <span className="text-zinc-500 font-medium">Core Strengths</span>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    {["Quick Learner", "Problem Solving", "Teamwork", "Hardworking"].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 group">
+                        <div className="w-8 h-1 bg-zinc-100 rounded-full overflow-hidden">
+                           <div className="h-full bg-zinc-900 w-0 group-hover:w-full transition-all duration-500"></div>
+                        </div>
+                        <span className="font-medium text-zinc-800">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+               </div>
+            </div>
 
-              {/* Hobbies Mini Card */}
-              <div className="bg-white p-6 rounded-3xl border border-zinc-200/60">
-                <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-4">Hobbies</h2>
-                <div className="flex gap-2 flex-wrap">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-zinc-50 rounded-lg text-sm text-zinc-600 border border-zinc-100">
-                    <PenTool size={14} /> Sketching
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-zinc-50 rounded-lg text-sm text-zinc-600 border border-zinc-100">
-                    <Code size={14} /> Programming
-                  </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Minimal Contact */}
+      <section id="contact" className="py-24 px-6 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-zinc-200 shadow-2xl shadow-zinc-200/50">
+            <div className="text-center mb-10">
+              <div className="inline-block p-4 bg-zinc-50 rounded-2xl mb-4">
+                <Mail className="text-zinc-900" size={32} />
+              </div>
+              <h2 className="text-3xl font-bold text-zinc-900 mb-2">Let's Connect</h2>
+              <p className="text-zinc-500">
+                Have a project or just want to say hi? <br/> Drop me a message below.
+              </p>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="group relative">
+                  <input 
+                    type="text" 
+                    placeholder="Name" 
+                    className="w-full bg-zinc-50 border-2 border-transparent focus:bg-white focus:border-zinc-900 rounded-xl px-4 py-3 outline-none transition-all"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
+                <div className="group relative">
+                  <input 
+                    type="email" 
+                    placeholder="Email" 
+                    className="w-full bg-zinc-50 border-2 border-transparent focus:bg-white focus:border-zinc-900 rounded-xl px-4 py-3 outline-none transition-all"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
                 </div>
               </div>
+              <textarea 
+                rows="4" 
+                placeholder="How can I help you?" 
+                className="w-full bg-zinc-50 border-2 border-transparent focus:bg-white focus:border-zinc-900 rounded-xl px-4 py-3 outline-none transition-all resize-none"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              ></textarea>
+              
+              <button 
+                disabled={isSubmitting}
+                className="w-full bg-zinc-900 text-white py-4 rounded-xl font-bold tracking-wide hover:bg-zinc-800 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"} <MousePointer2 size={16} />
+              </button>
+            </form>
 
+            <div className="mt-8 text-center pt-8 border-t border-zinc-100">
+              <a href="mailto:ishushreyas@gmail.com" className="text-zinc-400 hover:text-zinc-900 transition-colors font-medium">
+                ishushreyas@gmail.com
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Minimal Footer / Contact Trigger */}
-      <footer id="contact" className="py-12 bg-white border-t border-zinc-100 relative z-10">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-zinc-900 mb-6">Ready to collaborate?</h2>
-          
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-3 mb-12">
-            <div className="flex gap-3">
-              <input 
-                type="text" placeholder="Name" 
-                className="w-1/2 bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-200"
-                value={formData.name}
-                onChange={e => setFormData({...formData, name: e.target.value})}
-              />
-              <input 
-                type="email" placeholder="Email" 
-                className="w-1/2 bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-200"
-                value={formData.email}
-                onChange={e => setFormData({...formData, email: e.target.value})}
-              />
-            </div>
-            <textarea 
-              placeholder="Leave a message..." 
-              rows="3"
-              className="w-full bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-200 resize-none"
-              value={formData.message}
-              onChange={e => setFormData({...formData, message: e.target.value})}
-            ></textarea>
-            <button disabled={isSubmitting} className="w-full bg-zinc-900 text-white font-medium py-3 rounded-xl hover:bg-zinc-800 transition-all flex items-center justify-center gap-2">
-              {isSubmitting ? 'Sending...' : 'Send Message'} <ArrowRight size={16} />
-            </button>
-          </form>
-
-          <div className="flex justify-center gap-6 text-zinc-400">
-            <a href="https://github.com/ishushreyas" className="hover:text-zinc-900 transition-colors"><Github size={20}/></a>
-            <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="hover:text-zinc-900 transition-colors"><Linkedin size={20}/></a>
-            <a href="mailto:ishushreyas@gmail.com" className="hover:text-zinc-900 transition-colors"><Mail size={20}/></a>
+      {/* Footer */}
+      <footer className="py-8 bg-zinc-50 border-t border-zinc-200">
+        <div className="max-w-5xl mx-auto px-6 flex justify-between items-center text-zinc-400 text-sm">
+          <span>© {new Date().getFullYear()} Ishu Shreyas</span>
+          <div className="flex gap-4">
+            <a href="https://github.com/ishushreyas" className="hover:text-zinc-900 transition-colors"><Github size={18} /></a>
+            <a href="https://linkedin.com" className="hover:text-zinc-900 transition-colors"><Linkedin size={18} /></a>
           </div>
-          <p className="mt-8 text-xs text-zinc-400">© 2025 Ishu Shreyas</p>
         </div>
       </footer>
     </div>
