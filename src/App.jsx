@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Github, Linkedin, Mail, Menu, X, ArrowRight, Heart,
-  Smile, Book, Tv, Code, Cog, Cpu, Wallet,
-  MessageSquare, Flower, Send, FileText, Star, Brush, AppWindow, Loader2
+  Github, Linkedin, Mail, ArrowRight, Heart,
+  Zap, Book, Tv, Code, Cpu, Wallet,
+  MessageSquare, Flower, Send, FileText, Star, PenTool, Terminal, Activity, Radio
 } from 'lucide-react';
 
 const App = () => {
@@ -11,6 +11,13 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('');
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Custom cursor blinking effect state
+  const [cursorVisible, setCursorVisible] = useState(true);
+  useEffect(() => {
+    const timer = setInterval(() => setCursorVisible(v => !v), 530);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +29,9 @@ const App = () => {
         body: JSON.stringify(formData),
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
+      alert("SIGNAL TRANSMITTED SUCCESSFULLY"); // Replaced subtle toast with alert for retro feel
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Transmission Error:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -54,141 +62,181 @@ const App = () => {
 
   const journeys = [
     {
-      title: "zerosix",
-      description: "A Progressive Web App to track shared expenses with friends using React and Golang.",
-      tags: ["React", "Golang", "PWA", "WebSockets"],
+      title: "PROJ: zerosix",
+      id: "P-01",
+      description: "Progressive Web App expense tracker. Implemented concurrent cost logic.",
+      tags: ["React", "Golang", "WebSocket", "PWA"],
       link: "https://zerosix.ishushreyas.studio/",
-      icon: <Wallet className="w-8 h-8 text-black" />
+      icon: <Wallet className="w-6 h-6" />
     },
     {
-      title: "Money Buisness",
-      description: "Prank application with face recognition.",
-      tags: ["Python", "React", "pythonanywhere.com"],
+      title: "PROJ: Money Biz",
+      id: "P-02",
+      description: "Facial recognition interface for prank application logic.",
+      tags: ["Python", "CV", "React"],
       link: "https://github.com/ishushreyas/money-buisness",
-      icon: <Flower className="w-8 h-8 text-black" />
+      icon: <Flower className="w-6 h-6" />
     },
     {
-      title: "Chatbot",
-      description: "Developed a chatbot with Gemini's API for interactive conversations.",
-      tags: ["Golang", "React", "GeminiAPI"],
+      title: "PROJ: Chat_Bot",
+      id: "P-03",
+      description: "Conversational agent utilizing Gemini API neural pathways.",
+      tags: ["Golang", "LLM", "API"],
       link: "https://github.com/ishushreyas/gemini-project",
-      icon: <MessageSquare className="w-8 h-8 text-black" />
+      icon: <MessageSquare className="w-6 h-6" />
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Navigation */}
-      <div className="fixed w-full h-32 z-50 transition-all duration-300">
-        <div
-          className="absolute inset-0"
-          style={{
-            backdropFilter: scrolled ? 'blur(18px)' : 'none',
-            backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'transparent',
-            maskImage: scrolled
-              ? 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, transparent 100%)'
-              : 'none',
-            WebkitMaskImage: scrolled
-              ? 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, transparent 100%)'
-              : 'none',
-          }}
-        />
+    <div className="min-h-screen bg-[#050a05] text-[#33ff33] font-mono selection:bg-[#33ff33] selection:text-black">
+      
+      {/* BACKGROUND GRID (Oscilloscope Effect) */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-20" 
+           style={{
+             backgroundImage: `
+               linear-gradient(to right, #1a4d1a 1px, transparent 1px),
+               linear-gradient(to bottom, #1a4d1a 1px, transparent 1px)
+             `,
+             backgroundSize: '40px 40px'
+           }}>
+      </div>
+
+      {/* Navigation - Top Status Bar */}
+      <div className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-[#050a05]/95 border-[#33ff33]' : 'bg-transparent border-transparent'}`}>
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Activity className="w-5 h-5 animate-pulse" />
+            <span className="text-lg tracking-widest font-bold">SYS.ISHU_SHREYAS</span>
+          </div>
+          <div className="hidden md:flex gap-8 text-sm">
+            {['ABOUT', 'JOURNEY', 'CONTACT'].map((item) => (
+              <a 
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="hover:bg-[#33ff33] hover:text-black px-2 py-1 transition-colors border border-transparent hover:border-[#33ff33]"
+              >
+                [{item}]
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 pb-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 mt-[55vh] md:mt-auto">
-            <div className="bg-gray-100 px-4 py-2 rounded-full inline-flex items-center">
-              <Star className="w-5 h-5 mr-2 text-black" />
-              <span className="text-black font-medium">Welcome</span>
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 border-b border-[#33ff33]/30">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="space-y-8">
+            <div className="inline-block border border-[#33ff33] px-4 py-1 text-xs tracking-widest uppercase bg-[#33ff33]/10">
+              <span className="animate-pulse">●</span> System Online
             </div>
             
-            <p className="text-xl text-gray-600 font-light">
-              A tech enthusiast from Jamshedpur, crafting digital experiences with heart and soul.
-            </p>
+            <div className="space-y-2">
+              <p className="text-sm text-[#33ff33]/70 uppercase tracking-widest">
+                // Diploma: Electrical Engineering
+              </p>
+              <h1 className="text-5xl md:text-7xl font-bold leading-none tracking-tighter">
+                ISHU<br/>SHREYAS
+              </h1>
+              <p className="text-xl text-[#33ff33] border-l-4 border-[#33ff33] pl-4 py-2 mt-4 bg-[#33ff33]/5">
+                Bridging Hardware Logic &<br/>Software Architecture.
+              </p>
+            </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-black leading-tight">
-              Ishu Shreyas
-            </h1>
-            
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               <a 
                 href="#journey" 
-                className="bg-black text-white px-6 py-3 rounded-full 
-                  flex items-center gap-2 transition-all hover:bg-gray-900"
+                className="group relative px-6 py-3 bg-[#33ff33] text-black font-bold 
+                  hover:bg-[#2bd92b] transition-all flex items-center gap-2 clip-path-polygon"
+                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)' }}
               >
-                See my work <ArrowRight size={20} />
+                INITIATE_VIEW <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </a>
               <a 
                 href="/resume.pdf" 
-                className="bg-gray-100 text-black px-6 py-3 rounded-full 
-                  flex items-center gap-2 transition-all hover:bg-gray-200"
+                className="px-6 py-3 border border-[#33ff33] text-[#33ff33] 
+                  hover:bg-[#33ff33]/10 transition-all flex items-center gap-2"
               >
-                Resume <FileText size={20} />
+                DOWNLOAD_DATA <FileText size={20} />
               </a>
             </div>
           </div>
 
           <div className="relative">
-            <div className="rounded-3xl relative overflow-hidden">
-              <img
-                src="/ishushreyas.jpg"
-                alt="Ishu Shreyas"
-                className="rounded-2xl relative z-10"
-              />
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100/50 to-gray-200/50 opacity-50 blur-2xl -z-10"></div>
+            {/* Image Frame - Schematic Style */}
+            <div className="relative border-2 border-[#33ff33] p-2">
+                <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-[#33ff33]"></div>
+                <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-[#33ff33]"></div>
+                
+                <img
+                  src="/ishushreyas.jpg"
+                  alt="Ishu Shreyas"
+                  className="w-full h-auto grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-500"
+                  style={{ filter: 'grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(300%) contrast(0.8)' }}
+                />
+                
+                {/* Technical Overlay */}
+                <div className="absolute bottom-4 right-4 text-xs bg-black/80 px-2 py-1 border border-[#33ff33]">
+                  FIG 1.1: CREATOR
+                </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-gray-50">
+      <section id="about" className="py-24 border-b border-[#33ff33]/30 relative">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-black flex items-center gap-3">
-                <Smile className="w-8 h-8 text-black" /> About Me
+              <h2 className="text-3xl font-bold flex items-center gap-3 uppercase tracking-wider">
+                <Radio className="w-8 h-8 animate-pulse" /> 
+                <span className="border-b-4 border-[#33ff33]">Signal Input</span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed font-light">
-                I'm Ishu, a curious soul from the vibrant city of Jamshedpur, India. My journey in tech is fueled by a deep passion for creating meaningful experiences through code.
+              <p className="text-lg text-[#33ff33]/80 leading-relaxed">
+                > Origin: Jamshedpur, India<br/>
+                > Status: Active Learner<br/><br/>
+                My kernel is compiled with Electrical Engineering fundamentals, running on a Full-Stack loop. I translate voltage into visuals and logic into life.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-3xl transition-all hover:shadow-md">
-                <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
-                  <Heart className="w-5 h-5 text-black" /> What I Love
-                </h3>
-                <ul className="space-y-2 text-gray-600 font-light">
-                  <li className="flex items-center gap-2">
-                    <Book size={16} /> Reading 
+            <div className="grid gap-6">
+              {/* Box 1 */}
+              <div className="border border-[#33ff33] p-6 bg-[#33ff33]/5 relative">
+                <div className="absolute top-0 left-0 bg-[#33ff33] text-black text-xs px-2 py-1 font-bold">
+                  MODULE: INTERESTS
+                </div>
+                <ul className="mt-6 space-y-3">
+                  <li className="flex items-center gap-3">
+                    <Book size={16} /> [READING_DATA]
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Tv size={16} /> One Piece adventures
+                  <li className="flex items-center gap-3">
+                    <Tv size={16} /> [OP_ADVENTURE_LOGS]
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Brush size={16} /> Drawing
+                  <li className="flex items-center gap-3">
+                    <PenTool size={16} /> [SCHEMATIC_DRAWING]
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-3xl transition-all hover:shadow-md">
-                <h3 className="text-xl font-semibold text-black mb-4 flex items-center gap-2">
-                  <Code className="w-5 h-5 text-black" /> Tech I Use
-                </h3>
-                <ul className="space-y-2 text-gray-600 font-light">
-                  <li className="flex items-center gap-2">
-                    <AppWindow size={16} /> React & Tailwind
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Cog size={16} /> Golang
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Cpu size={16} /> Docker 
-                  </li>
-                </ul>
+              {/* Box 2 */}
+              <div className="border border-[#33ff33] p-6 bg-[#33ff33]/5 relative">
+                <div className="absolute top-0 left-0 bg-[#33ff33] text-black text-xs px-2 py-1 font-bold">
+                  MODULE: TECH_STACK
+                </div>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-2 text-sm">
+                    <Terminal size={16} /> REACT.JS
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Cpu size={16} /> GOLANG
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Zap size={16} /> DOCKER
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Activity size={16} /> TAILWIND
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -196,10 +244,11 @@ const App = () => {
       </section>
 
       {/* Journey Section */}
-      <section id="journey" className="py-24 bg-gray-100">
+      <section id="journey" className="py-24 border-b border-[#33ff33]/30 bg-[#081208]">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-black mb-12 flex items-center gap-3">
-            <Code className="w-8 h-8 text-black" /> Things I've Built
+          <h2 className="text-3xl font-bold mb-12 flex items-center gap-3 uppercase tracking-wider">
+            <Cpu className="w-8 h-8" /> 
+            <span className="border-b-4 border-[#33ff33]">Output Log</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -209,23 +258,32 @@ const App = () => {
                 key={index}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group"
+                className="group block relative"
               >
-                <div className="bg-white p-6 rounded-3xl 
-                  transition-all duration-300 transform hover:-translate-y-2
-                  shadow-sm hover:shadow-md">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="bg-gray-100 p-3 rounded-full">
-                      {journey.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-black">{journey.title}</h3>
+                <div className="h-full border border-[#33ff33] bg-black p-6 hover:bg-[#33ff33]/10 transition-all duration-200">
+                  {/* Decorative Screw Heads */}
+                  <div className="absolute top-2 left-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
+                  <div className="absolute top-2 right-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
+                  <div className="absolute bottom-2 left-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
+                  <div className="absolute bottom-2 right-2 w-1 h-1 bg-[#33ff33] rounded-full opacity-50"></div>
+
+                  <div className="flex justify-between items-start mb-4 border-b border-[#33ff33]/30 pb-2">
+                     <span className="text-xs bg-[#33ff33] text-black px-1 font-bold">{journey.id}</span>
+                     {journey.icon}
                   </div>
-                  <p className="text-gray-600 mb-4 font-light">{journey.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  
+                  <h3 className="text-xl font-bold mb-2 group-hover:underline decoration-2 underline-offset-4">
+                    {journey.title}
+                  </h3>
+                  <p className="text-sm text-[#33ff33]/70 mb-6 font-light">
+                    {journey.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {journey.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm"
+                        className="text-xs border border-[#33ff33]/50 px-2 py-1 text-[#33ff33]/80 uppercase"
                       >
                         {tag}
                       </span>
@@ -239,111 +297,105 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gray-100">
-        <div className="max-w-3xl mx-auto px-6">
-          <div>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-black mb-4 flex items-center justify-center gap-3">
-                <Send className="w-8 h-8 text-black" /> Let's Connect
-              </h2>
-              <p className="text-gray-600 font-light">
-                Whether you have an exciting project or just want to say hi, I'd love to hear from you!
-              </p>
-            </div>
+      <section id="contact" className="py-24">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="border-2 border-[#33ff33] p-1 bg-[#050a05]">
+            <div className="bg-[#33ff33]/10 p-8 md:p-12 border border-[#33ff33]/30">
+              
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold mb-2 uppercase flex items-center justify-center gap-2">
+                  <Send className="w-6 h-6" /> Transmission
+                </h2>
+                <div className="h-1 w-20 bg-[#33ff33] mx-auto"></div>
+              </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-12 rounded-3xl shadow-sm">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-gray-600 font-medium">Name</label>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-1">
+                    <label className="text-xs uppercase tracking-wider font-bold">Input: Name</label>
+                    <input
+                      type="text"
+                      className="w-full bg-black border border-[#33ff33] px-4 py-3 
+                        text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33] 
+                        placeholder-[#33ff33]/30"
+                      placeholder="USER_ID"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs uppercase tracking-wider font-bold">Input: Email</label>
+                    <input
+                      type="email"
+                      className="w-full bg-black border border-[#33ff33] px-4 py-3 
+                        text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
+                        placeholder-[#33ff33]/30"
+                      placeholder="LOCATOR@"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs uppercase tracking-wider font-bold">Param: Subject</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 bg-gray-50 rounded-xl 
-                      border border-gray-200 focus:outline-none 
-                      focus:ring-2 focus:ring-gray-200 transition-all"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-black border border-[#33ff33] px-4 py-3 
+                      text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
+                      placeholder-[#33ff33]/30"
+                    placeholder="TOPIC_HEADER"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-gray-600 font-medium">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 bg-gray-50 rounded-xl 
-                      border border-gray-200 focus:outline-none 
-                      focus:ring-2 focus:ring-gray-200 transition-all"
-                    placeholder="someone@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
+
+                <div className="space-y-1">
+                  <label className="text-xs uppercase tracking-wider font-bold">Data Payload</label>
+                  <textarea
+                    rows="4"
+                    className="w-full bg-black border border-[#33ff33] px-4 py-3 
+                      text-[#33ff33] focus:outline-none focus:ring-1 focus:ring-[#33ff33]
+                      placeholder-[#33ff33]/30 resize-none"
+                    placeholder="ENTER MESSAGE STREAM..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  ></textarea>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <label className="text-gray-600 font-medium">Subject</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 bg-gray-50 rounded-xl 
-                    border border-gray-200 focus:outline-none 
-                    focus:ring-2 focus:ring-gray-200 transition-all"
-                  placeholder="Project Discussion"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-gray-600 font-medium">Message</label>
-                <textarea
-                  rows="4"
-                  className="w-full px-4 py-3 bg-gray-50 rounded-xl 
-                    border border-gray-200 focus:outline-none 
-                    focus:ring-2 focus:ring-gray-200 transition-all resize-none"
-                  placeholder="Tell me about your project..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-black text-white py-4 rounded-xl 
-                  transition-all flex items-center justify-center gap-2
-                  hover:bg-gray-900 disabled:opacity-70"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 size={16} className="animate-spin" /> 
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message <Send size={16} />
-                  </>
-                )}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#33ff33] text-black font-bold py-4 
+                    uppercase tracking-widest hover:bg-[#2bd92b] transition-all 
+                    border-2 border-transparent hover:border-black flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? 'TRANSMITTING...' : 'EXECUTE_SEND'}
+                  <span className={`${cursorVisible ? 'opacity-100' : 'opacity-0'}`}>_</span>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-white">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <img className="w-80" src="/sign_light.png" />
-          <div className="flex items-center space-x-6 mt-6 md:mt-0">
-            <a href="https://github.com/ishushreyas" target="_blank" rel="noopener noreferrer" 
-              className="text-black hover:text-gray-600 transition-colors">
-              <Github size={20} />
+      <footer className="py-8 border-t border-[#33ff33]/30 bg-[#020402]">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="flex items-center gap-2 mb-4 md:mb-0">
+             <div className="w-2 h-2 bg-[#33ff33] rounded-full animate-ping"></div>
+             <span>SYSTEM STATUS: OPERATIONAL</span>
+          </div>
+          
+          <div className="flex items-center space-x-8">
+            <a href="https://github.com/ishushreyas" className="hover:text-white transition-colors flex items-center gap-2">
+              <Github size={16} /> GITHUB
             </a>
-            <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" target="_blank" rel="noopener noreferrer" 
-              className="text-black hover:text-gray-600 transition-colors">
-              <Linkedin size={20} />
+            <a href="https://www.linkedin.com/in/ishu-shreyas-776b61297" className="hover:text-white transition-colors flex items-center gap-2">
+              <Linkedin size={16} /> LINKEDIN
             </a>
-            <a href="mailto:ishushreyas@gmail.com" 
-              className="text-black hover:text-gray-600 transition-colors">
-              <Mail size={20} />
+            <a href="mailto:ishushreyas@gmail.com" className="hover:text-white transition-colors flex items-center gap-2">
+              <Mail size={16} /> EMAIL
             </a>
           </div>
         </div>
